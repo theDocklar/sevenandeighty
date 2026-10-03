@@ -82,7 +82,7 @@ export function WorkSection() {
             style={{ display: "flex", flexDirection: "column", gap: "12px" }}
           >
             <div
-              className="hover:bg-[#ECEDEE]"
+              className="reel-card-box"
               style={{
                 position: "relative",
                 aspectRatio: "9/16",
@@ -91,7 +91,6 @@ export function WorkSection() {
                 alignItems: "center",
                 justifyContent: "center",
                 overflow: "hidden",
-                transition: "background .3s",
                 cursor: "pointer",
               }}
             >

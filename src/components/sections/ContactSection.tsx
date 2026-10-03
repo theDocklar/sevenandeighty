@@ -56,7 +56,7 @@ export function ContactSection() {
           href="https://wa.me/94775146688"
           target="_blank"
           rel="noopener noreferrer"
-          className="hover:opacity-90"
+          className="btn-whatsapp-hero"
           style={{
             alignSelf: "flex-start",
             display: "flex",
@@ -90,7 +90,7 @@ export function ContactSection() {
           href="https://wa.me/94775146688"
           target="_blank"
           rel="noopener noreferrer"
-          className="hover:bg-[#111317] hover:text-[#FFFFFF]"
+          className="contact-card-box"
           style={{
             flex: 1,
             display: "flex",
@@ -99,7 +99,6 @@ export function ContactSection() {
             gap: "28px",
             padding: "32px clamp(16px,3vw,48px)",
             borderBottom: "1px solid #E6E7E9",
-            transition: "background .3s,color .3s",
           }}
         >
           <span
@@ -125,7 +124,7 @@ export function ContactSection() {
 
         <a
           href="tel:+94766901333"
-          className="hover:bg-[#111317] hover:text-[#FFFFFF]"
+          className="contact-card-box"
           style={{
             flex: 1,
             display: "flex",
@@ -134,7 +133,6 @@ export function ContactSection() {
             gap: "28px",
             padding: "32px clamp(16px,3vw,48px)",
             borderBottom: "1px solid #E6E7E9",
-            transition: "background .3s,color .3s",
           }}
         >
           <span

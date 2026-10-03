@@ -120,7 +120,7 @@ export function HeroSection() {
               href="https://wa.me/94775146688"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:opacity-90"
+              className="btn-whatsapp-hero"
               style={{
                 display: "flex",
                 alignItems: "center",

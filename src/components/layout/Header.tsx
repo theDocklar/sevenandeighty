@@ -64,13 +64,12 @@ export function Header() {
             <a
               key={item.href}
               href={item.href}
-              className="hover:underline"
+              className="nav-link"
               style={{
                 padding: "28px 0",
                 font: "500 13px/1 'Poppins',sans-serif",
                 letterSpacing: ".01em",
                 textTransform: "lowercase",
-                textUnderlineOffset: "8px",
               }}
             >
               {item.label}
@@ -81,7 +80,7 @@ export function Header() {
           href="https://wa.me/94775146688"
           target="_blank"
           rel="noopener noreferrer"
-          className="hover:bg-[#111317] hover:text-white"
+          className="btn-whatsapp-header"
           style={{
             flex: "none",
             display: "flex",
@@ -94,7 +93,6 @@ export function Header() {
             letterSpacing: ".01em",
             textTransform: "lowercase",
             whiteSpace: "nowrap",
-            transition: "background .25s,color .25s",
           }}
         >
           <span

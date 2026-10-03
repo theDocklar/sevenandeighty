@@ -1,45 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import localFont from "next/font/local";
 import "./globals.css";
-
-const bodoni = localFont({
-  src: [
-    {
-      path: "../fonts/BodoniModa-Regular.woff2",
-      weight: "400 800",
-      style: "normal",
-    },
-    {
-      path: "../fonts/BodoniModa-Italic.woff2",
-      weight: "400 800",
-      style: "italic",
-    },
-  ],
-  display: "swap",
-  variable: "--font-bodoni",
-});
-
-const poppins = localFont({
-  src: [
-    {
-      path: "../fonts/Poppins-Regular.woff2",
-      weight: "400",
-      style: "normal",
-    },
-    {
-      path: "../fonts/Poppins-Medium.woff2",
-      weight: "500",
-      style: "normal",
-    },
-    {
-      path: "../fonts/Poppins-SemiBold.woff2",
-      weight: "600",
-      style: "normal",
-    },
-  ],
-  display: "swap",
-  variable: "--font-poppins",
-});
 
 export const metadata: Metadata = {
   title: "Seven & Eighty · 7°N & 80°E",
@@ -93,7 +53,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${bodoni.variable} ${poppins.variable}`}>
+    <html lang="en">
       <body className="min-h-screen bg-white text-ink antialiased">
         {children}
       </body>

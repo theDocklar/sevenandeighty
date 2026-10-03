@@ -1,17 +1,17 @@
 @import "tailwindcss";
+@import "./fonts.css";
 
-@theme {
-  --color-ink: #111317;
-  --color-surface-border: #E6E7E9;
-  --font-serif: var(--font-bodoni), "Bodoni Moda", Didot, "Bodoni 72", Georgia, serif;
-  --font-sans: var(--font-poppins), "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
+:root {
+  --background: #FFFFFF;
+  --foreground: #111317;
+  --border: #E6E7E9;
 }
 
 body {
   margin: 0;
   background: #FFFFFF;
   color: #111317;
-  font-family: var(--font-poppins), "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -40,6 +40,124 @@ button {
 ::selection {
   background: #111317;
   color: #FFFFFF;
+}
+
+/* Animations matching original HTML DCLogic */
+@keyframes marqueeScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+[data-marquee="1"] {
+  display: flex;
+  width: max-content;
+  align-items: center;
+  animation: marqueeScroll 40s linear infinite;
+  will-change: transform;
+}
+
+[data-marquee="1"]:hover {
+  animation-play-state: paused;
+}
+
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.2; }
+}
+
+[data-pulse="1"], [data-pulse] {
+  animation: pulseDot 1.8s infinite;
+}
+
+@keyframes float0 {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+@keyframes float1 {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+@keyframes float2 {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+[data-float="0"] {
+  animation: float0 6s ease-in-out infinite;
+  will-change: transform;
+}
+[data-float="1"] {
+  animation: float1 6.9s ease-in-out 0.5s infinite;
+  will-change: transform;
+}
+[data-float="2"] {
+  animation: float2 7.8s ease-in-out 1.0s infinite;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-marquee="1"],
+  [data-pulse="1"],
+  [data-pulse],
+  [data-float="0"],
+  [data-float="1"],
+  [data-float="2"] {
+    animation: none !important;
+  }
+}
+
+/* Replicating style-hover states from original HTML */
+.nav-link {
+  transition: text-decoration 0.2s;
+}
+.nav-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 8px;
+}
+
+.btn-whatsapp-header {
+  transition: background 0.25s, color 0.25s;
+}
+.btn-whatsapp-header:hover {
+  background: #111317 !important;
+  color: #FFFFFF !important;
+}
+
+.btn-whatsapp-hero {
+  transition: opacity 0.25s;
+}
+.btn-whatsapp-hero:hover {
+  color: #FFFFFF !important;
+  opacity: 0.88 !important;
+}
+
+.reel-card-box {
+  transition: background 0.3s;
+}
+.reel-card-box:hover {
+  background: #ECEDEE !important;
+}
+
+.kit-card-box {
+  transition: background 0.35s, color 0.35s;
+}
+.kit-card-box:hover {
+  background: #111317 !important;
+  color: #FFFFFF !important;
+}
+.kit-card-box:hover span {
+  color: #FFFFFF !important;
+}
+
+.contact-card-box {
+  transition: background 0.3s, color 0.3s;
+}
+.contact-card-box:hover {
+  background: #111317 !important;
+  color: #FFFFFF !important;
+}
+.contact-card-box:hover span {
+  color: #FFFFFF !important;
 }
 
 /* Custom subtle scrollbar */

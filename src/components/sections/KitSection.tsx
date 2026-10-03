@@ -82,7 +82,7 @@ export function KitSection() {
           <div
             key={k[1]}
             data-reveal="1"
-            className="hover:bg-[#111317] hover:text-[#FFFFFF]"
+            className="kit-card-box"
             style={{
               minHeight: "280px",
               padding: "24px clamp(16px,2vw,28px)",
@@ -91,7 +91,6 @@ export function KitSection() {
               justifyContent: "space-between",
               gap: "24px",
               borderRight: "1px solid #E6E7E9",
-              transition: "background .35s,color .35s",
               cursor: "default",
             }}
           >

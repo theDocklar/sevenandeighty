@@ -19,23 +19,29 @@ const REELS = [
   },
   {
     n: "02",
+    title: "AVVOX",
+    type: "Audio & Commercial Film",
+    videoSrc: "/videos/avvox-website.mp4",
+    tag: "Brand Campaign",
+  },
+  {
+    n: "03",
     title: "Episode 01 — The Strategy",
     type: "Agency & Social Retainer",
     videoSrc: "/videos/ep01-website.mp4",
     tag: "Original Series",
   },
   {
-    n: "03",
+    n: "04",
     title: "On-Set Field Cam",
     type: "Production & Raw Takes",
     videoSrc: "/videos/bts-onset.mov",
     tag: "Behind The Scenes",
   },
-  { n: "04", title: "Villa Mirissa", type: "Luxury Stay", tag: "Architectural" },
-  { n: "05", title: "Aura Colombo", type: "Culinary & Dining", tag: "Micro-Details" },
-  { n: "06", title: "Tropic Co.", type: "Beverage & Bar", tag: "High Speed" },
-  { n: "07", title: "Southern Coastline", type: "FPV Flythrough", tag: "Avata 2 Flight" },
-  { n: "08", title: "Colombo Nightscape", type: "City & Automotive", tag: "Night Cinema" },
+  { n: "05", title: "Villa Mirissa", type: "Luxury Stay", tag: "Architectural" },
+  { n: "06", title: "Aura Colombo", type: "Culinary & Dining", tag: "Micro-Details" },
+  { n: "07", title: "Tropic Co.", type: "Beverage & Bar", tag: "High Speed" },
+  { n: "08", title: "Southern Coastline", type: "FPV Flythrough", tag: "Avata 2 Flight" },
 ];
 
 export function WorkSection() {

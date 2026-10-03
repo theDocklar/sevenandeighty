@@ -20,6 +20,13 @@ const GALLERY_ITEMS = [
     caption: "Live footage captured on set for SQALO Ravello with wide prime optics and cinema picture profiles.",
   },
   {
+    title: "AVVOX Commercial Production",
+    category: "Commercial Film",
+    aspect: "9/16",
+    videoSrc: "/videos/avvox-website.mp4",
+    caption: "High-contrast commercial lighting, fast-paced macro cuts, and precision sound design for AVVOX.",
+  },
+  {
     title: "Episode 01 — Pipeline & Ingest",
     category: "Production Pipeline",
     aspect: "9/16",
@@ -44,12 +51,6 @@ const GALLERY_ITEMS = [
     category: "Post-Production",
     aspect: "16/9",
     caption: "Graded on calibrated OLED panels to ensure vibrancy on both Apple Super Retina and Android screens.",
-  },
-  {
-    title: "Zhiyun Smooth Gimbal Setup",
-    category: "Stabilization",
-    aspect: "4/3",
-    caption: "Ultralight gimbal balance for cinematic motion without bulky cranes.",
   },
 ];
 

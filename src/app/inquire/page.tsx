@@ -9,9 +9,27 @@ import { InquiryTrust } from "@/components/inquiry/InquiryTrust";
 import { Reveal, SplitHeading } from "@/components/motion/primitives";
 
 export const metadata: Metadata = {
-  title: "Inquire · Start a Project | Seven & Eighty (7°N 80°E)",
+  title: "Inquire · Start a Project & Book a Shoot",
   description:
-    "Tell us what you sell. We meet in person, sign an NDA within 48 hours, and launch high-converting video reels and social content for your brand.",
+    "Tell us what you sell. We meet in person, sign an NDA within 48 hours, and launch high-converting video reels, FPV drone shoots, and social campaigns for your brand.",
+  alternates: {
+    canonical: "/inquire",
+  },
+  openGraph: {
+    title: "Inquire · Start a Project | Seven & Eighty (7°N 80°E)",
+    description:
+      "Tell us what you sell. We meet in person, sign an NDA within 48 hours, and launch high-converting video reels, FPV drone shoots, and social campaigns for your brand.",
+    url: "https://sevenandeighty.com/inquire",
+    siteName: "Seven and Eighty",
+    images: [
+      {
+        url: "/og-image-1200x630.png",
+        width: 1200,
+        height: 630,
+        alt: "Inquire & Book — Seven & Eighty (7°N 80°E)",
+      },
+    ],
+  },
 };
 
 export default function InquirePage() {

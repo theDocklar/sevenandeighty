@@ -9,9 +9,27 @@ import { BTSStories } from "@/components/bts/BTSStories";
 import { BTSGallery } from "@/components/bts/BTSGallery";
 
 export const metadata: Metadata = {
-  title: "Behind The Scenes · Field Notes | Seven & Eighty (7°N 80°E)",
+  title: "Behind The Scenes · Field Notes & Production",
   description:
     "Explore how Seven & Eighty crafts frame-by-frame luxury and cinematic speed across Sri Lanka with in-house Sony cinema rigs, FPV drones, and 48-hour turnarounds.",
+  alternates: {
+    canonical: "/bts",
+  },
+  openGraph: {
+    title: "Behind The Scenes · Field Notes | Seven & Eighty (7°N 80°E)",
+    description:
+      "Explore how Seven & Eighty crafts frame-by-frame luxury and cinematic speed across Sri Lanka with in-house Sony cinema rigs, FPV drones, and 48-hour turnarounds.",
+    url: "https://sevenandeighty.com/bts",
+    siteName: "Seven and Eighty",
+    images: [
+      {
+        url: "/og-image-1200x630.png",
+        width: 1200,
+        height: 630,
+        alt: "Behind The Scenes — Seven & Eighty (7°N 80°E)",
+      },
+    ],
+  },
 };
 
 export default function BTSPage() {

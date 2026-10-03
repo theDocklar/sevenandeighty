@@ -36,3 +36,5 @@ next-env.d.ts
 # source video masters (compressed copies live in public/videos)
 /*.mp4
 /*.mov
+/*.MOV
+/raw_assets/

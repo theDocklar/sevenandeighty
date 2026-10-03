@@ -27,6 +27,13 @@ const GALLERY_ITEMS = [
     caption: "High-contrast commercial lighting, fast-paced macro cuts, and precision sound design for AVVOX.",
   },
   {
+    title: "Hospitality & Villa Cinematics",
+    category: "Resort & Architectural",
+    aspect: "9/16",
+    videoSrc: "/videos/hospitality-reel.mp4",
+    caption: "Fluid architectural walkthroughs, natural light tracking, and luxury hospitality aesthetic.",
+  },
+  {
     title: "Episode 01 — Pipeline & Ingest",
     category: "Production Pipeline",
     aspect: "9/16",
@@ -45,12 +52,6 @@ const GALLERY_ITEMS = [
     category: "FPV Flythrough",
     aspect: "16/9",
     caption: "Custom ducted propellers allowing safe indoor flight within millimeters of people and decor.",
-  },
-  {
-    title: "Davinci Resolve Color Suite",
-    category: "Post-Production",
-    aspect: "16/9",
-    caption: "Graded on calibrated OLED panels to ensure vibrancy on both Apple Super Retina and Android screens.",
   },
 ];
 

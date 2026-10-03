@@ -9,6 +9,23 @@ const PARTNERS = [
   { name: "Aztec by Ivy & Leo", src: "/partners/aztec.png", h: 28 },
 ];
 
+function LogoGroup({ hidden = false }: { hidden?: boolean }) {
+  return (
+    <div className="marquee-group" aria-hidden={hidden || undefined}>
+      {PARTNERS.map((p) => (
+        <img
+          key={p.name}
+          src={p.src}
+          alt={hidden ? "" : p.name}
+          className="marquee-logo"
+          style={{ height: `${p.h}px` }}
+          draggable={false}
+        />
+      ))}
+    </div>
+  );
+}
+
 export function PartnersSection() {
   return (
     <section
@@ -53,70 +70,10 @@ export function PartnersSection() {
         </span>
       </div>
 
-      <div
-        style={{
-          flex: "1 1 400px",
-          overflow: "hidden",
-          display: "flex",
-          alignItems: "center",
-          padding: "28px 0",
-          WebkitMaskImage: "linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)",
-          maskImage: "linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)",
-        }}
-      >
-        <div
-          data-marquee="1"
-          style={{
-            display: "flex",
-            width: "max-content",
-            alignItems: "center",
-          }}
-        >
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "64px",
-              paddingRight: "64px",
-            }}
-          >
-            {PARTNERS.map((p) => (
-              <img
-                key={p.name}
-                src={p.src}
-                alt={p.name}
-                style={{
-                  height: `${p.h}px`,
-                  width: "auto",
-                  display: "block",
-                  filter: "grayscale(1) brightness(.35)",
-                }}
-              />
-            ))}
-          </div>
-          <div
-            aria-hidden="true"
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "64px",
-              paddingRight: "64px",
-            }}
-          >
-            {PARTNERS.map((p, idx) => (
-              <img
-                key={`${p.name}-dup-${idx}`}
-                src={p.src}
-                alt=""
-                style={{
-                  height: `${p.h}px`,
-                  width: "auto",
-                  display: "block",
-                  filter: "grayscale(1) brightness(.35)",
-                }}
-              />
-            ))}
-          </div>
+      <div className="marquee-viewport">
+        <div className="marquee-track">
+          <LogoGroup />
+          <LogoGroup hidden />
         </div>
       </div>
     </section>

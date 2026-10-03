@@ -48,16 +48,50 @@ button {
   100% { transform: translateX(-50%); }
 }
 
-[data-marquee="1"] {
+.marquee-viewport {
+  flex: 1 1 400px;
+  min-width: 0;
+  overflow: hidden;
   display: flex;
-  width: max-content;
   align-items: center;
+  padding: 28px 0;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+.marquee-track {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  width: max-content;
+  flex: none;
   animation: marqueeScroll 40s linear infinite;
   will-change: transform;
 }
 
-[data-marquee="1"]:hover {
+.marquee-viewport:hover .marquee-track {
   animation-play-state: paused;
+}
+
+/* Each group is identical; translating by -50% loops seamlessly */
+.marquee-group {
+  display: flex;
+  flex-wrap: nowrap;
+  flex: none;
+  align-items: center;
+  gap: 64px;
+  padding-right: 64px;
+}
+
+/* Override Tailwind preflight (max-width:100%; height:auto) that shrank logos */
+.marquee-logo {
+  display: block;
+  flex: none;
+  width: auto;
+  max-width: none;
+  object-fit: contain;
+  filter: grayscale(1) brightness(.35);
+  user-select: none;
 }
 
 @keyframes pulseDot {
@@ -96,7 +130,7 @@ button {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  [data-marquee="1"],
+  .marquee-track,
   [data-pulse="1"],
   [data-pulse],
   [data-float="0"],

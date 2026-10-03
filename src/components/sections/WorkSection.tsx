@@ -49,7 +49,6 @@ const REELS = [
     n: "06",
     title: "Villa Mirissa",
     type: "Luxury Stay",
-    videoSrc: "/videos/hospitality-reel.mp4",
     tag: "Architectural",
   },
   { n: "07", title: "Tropic Co.", type: "Beverage & Bar", tag: "High Speed" },

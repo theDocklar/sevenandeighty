@@ -9,22 +9,32 @@ import { ServicesSection } from "@/components/sections/ServicesSection";
 import { ProcessSection } from "@/components/sections/ProcessSection";
 import { KitSection } from "@/components/sections/KitSection";
 import { ContactSection } from "@/components/sections/ContactSection";
+import { Providers } from "@/components/motion/Providers";
 
 export default function HomePage() {
   return (
-    <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column", background: "#FFFFFF" }}>
-      <WebsiteEffects />
-      <Header />
-      <main style={{ flex: 1 }}>
-        <HeroSection />
-        <PartnersSection />
-        <WorkSection />
-        <ServicesSection />
-        <ProcessSection />
-        <KitSection />
-        <ContactSection />
-      </main>
-      <Footer />
-    </div>
+    <Providers>
+      <div
+        style={{
+          minHeight: "100vh",
+          display: "flex",
+          flexDirection: "column",
+          background: "#FFFFFF",
+        }}
+      >
+        <WebsiteEffects />
+        <Header />
+        <main style={{ flex: 1 }}>
+          <HeroSection />
+          <PartnersSection />
+          <WorkSection />
+          <ServicesSection />
+          <ProcessSection />
+          <KitSection />
+          <ContactSection />
+        </main>
+        <Footer />
+      </div>
+    </Providers>
   );
 }

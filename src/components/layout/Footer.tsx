@@ -1,4 +1,8 @@
+"use client";
+
 import React from "react";
+import { motion } from "motion/react";
+import { Reveal } from "@/components/motion/primitives";
 
 export function Footer() {
   return (
@@ -11,9 +15,15 @@ export function Footer() {
         flexDirection: "column",
         alignItems: "center",
         gap: "clamp(64px,8vw,112px)",
+        background: "#FFFFFF",
       }}
     >
-      <div
+      {/* Horizontal Crosshair Line */}
+      <motion.div
+        initial={{ scaleX: 0 }}
+        whileInView={{ scaleX: 1 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
         style={{
           position: "absolute",
           left: 0,
@@ -21,9 +31,16 @@ export function Footer() {
           top: "calc(clamp(80px,10vw,140px) + clamp(48px,6vw,90px))",
           height: "1px",
           background: "#E6E7E9",
+          transformOrigin: "center",
         }}
       />
-      <div
+
+      {/* Vertical Crosshair Line */}
+      <motion.div
+        initial={{ scaleY: 0 }}
+        whileInView={{ scaleY: 1 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
         style={{
           position: "absolute",
           top: 0,
@@ -31,52 +48,79 @@ export function Footer() {
           left: "50%",
           width: "1px",
           background: "#E6E7E9",
+          transformOrigin: "top",
         }}
       />
-      <div
-        style={{
-          position: "relative",
-          background: "#FFFFFF",
-          padding: "24px clamp(20px,3vw,40px)",
-        }}
-      >
-        <img
-          src="/brand/seven-and-eighty-logo-black.svg"
-          alt="7°&80° — North, East"
+
+      {/* Center Logo with gentle float / pop */}
+      <Reveal delay={0.1}>
+        <motion.div
+          whileHover={{ scale: 1.02 }}
+          transition={{ type: "spring", stiffness: 300, damping: 20 }}
           style={{
-            width: "clamp(200px,32vw,453px)",
-            height: "auto",
-            display: "block",
+            position: "relative",
+            background: "#FFFFFF",
+            padding: "24px clamp(20px,3vw,40px)",
+            borderRadius: "4px",
           }}
-        />
-      </div>
-      <div
-        style={{
-          position: "relative",
-          width: "100%",
-          display: "flex",
-          flexWrap: "wrap",
-          justifyContent: "space-between",
-          gap: "12px 24px",
-          background: "#FFFFFF",
-          paddingTop: "20px",
-          borderTop: "1px solid #E6E7E9",
-          font: "600 10px/1.6 'Poppins',sans-serif",
-          letterSpacing: ".01em",
-          textTransform: "lowercase",
-          color: "rgba(17,19,23,.62)",
-        }}
-      >
-        <span style={{ whiteSpace: "nowrap" }}>Seven and Eighty · 7°N 80°E</span>
-        <a
-          href="https://instagram.com/7n80e"
-          target="_blank"
-          rel="noopener noreferrer"
         >
-          @7n80e
-        </a>
-        <span style={{ whiteSpace: "nowrap" }}>© 2026 sevenandeighty.com</span>
-      </div>
+          <img
+            src="/brand/seven-and-eighty-logo-black.svg"
+            alt="7°&80° — North, East"
+            style={{
+              width: "clamp(200px,32vw,453px)",
+              height: "auto",
+              display: "block",
+            }}
+          />
+        </motion.div>
+      </Reveal>
+
+      {/* Bottom bar */}
+      <Reveal delay={0.2} style={{ width: "100%" }}>
+        <div
+          style={{
+            position: "relative",
+            width: "100%",
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "space-between",
+            gap: "12px 24px",
+            background: "#FFFFFF",
+            paddingTop: "20px",
+            borderTop: "1px solid #E6E7E9",
+            font: "600 10px/1.6 'Poppins',sans-serif",
+            letterSpacing: ".01em",
+            textTransform: "lowercase",
+            color: "rgba(17,19,23,.62)",
+          }}
+        >
+          <span style={{ whiteSpace: "nowrap" }}>
+            Seven and Eighty · 7°N 80°E
+          </span>
+          <a
+            href="https://instagram.com/7n80e"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              color: "inherit",
+              textDecoration: "none",
+              transition: "color .2s",
+            }}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.color = "#111317")
+            }
+            onMouseLeave={(e) =>
+              (e.currentTarget.style.color = "rgba(17,19,23,.62)")
+            }
+          >
+            @7n80e
+          </a>
+          <span style={{ whiteSpace: "nowrap" }}>
+            © 2026 sevenandeighty.com
+          </span>
+        </div>
+      </Reveal>
     </footer>
   );
 }

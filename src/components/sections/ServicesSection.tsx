@@ -1,6 +1,12 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState } from "react";
+import { AnimatePresence, motion } from "motion/react";
+import {
+  EASE_OUT_EXPO,
+  Reveal,
+  SplitHeading,
+} from "@/components/motion/primitives";
 
 const SVC: [string, string][] = [
   ["Social media management", "Your page run like a storefront: posted, replied to and watched every day."],
@@ -15,20 +21,6 @@ const SVC: [string, string][] = [
 
 export function ServicesSection() {
   const [activeSvc, setActiveSvc] = useState(0);
-  const detailRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (detailRef.current) {
-      detailRef.current.animate(
-        [
-          { opacity: 0, transform: "translateY(8px)" },
-          { opacity: 1, transform: "none" },
-        ],
-        { duration: 400, easing: "cubic-bezier(.2,.7,.2,1)" }
-      );
-    }
-  }, [activeSvc]);
-
   const pad = (n: number) => (n < 10 ? `0${n}` : `${n}`);
 
   return (
@@ -42,7 +34,6 @@ export function ServicesSection() {
       }}
     >
       <div
-        data-reveal="1"
         style={{
           flex: "1 1 380px",
           padding: "clamp(64px,8vw,112px) clamp(16px,4vw,56px)",
@@ -54,17 +45,23 @@ export function ServicesSection() {
         }}
       >
         <div style={{ display: "flex", flexDirection: "column", gap: "22px" }}>
-          <div
-            style={{
-              font: "500 13px/1 'Poppins',sans-serif",
-              letterSpacing: ".01em",
-              textTransform: "lowercase",
-              color: "rgba(17,19,23,.62)",
-            }}
-          >
-            02 — What we do
-          </div>
-          <h2
+          <Reveal>
+            <div
+              style={{
+                font: "500 13px/1 'Poppins',sans-serif",
+                letterSpacing: ".01em",
+                textTransform: "lowercase",
+                color: "rgba(17,19,23,.62)",
+              }}
+            >
+              02 — What we do
+            </div>
+          </Reveal>
+          <SplitHeading
+            parts={[
+              { text: "Eight ways" },
+              { text: "to move the number that matters.", italic: true },
+            ]}
             style={{
               margin: 0,
               fontFamily: "'Bodoni Moda',serif",
@@ -73,17 +70,10 @@ export function ServicesSection() {
               lineHeight: 1,
               letterSpacing: "-.02em",
             }}
-          >
-            Eight ways{" "}
-            <span style={{ fontStyle: "italic" }}>
-              to move the number that matters.
-            </span>
-          </h2>
+          />
         </div>
 
         <div
-          ref={detailRef}
-          data-svc="1"
           style={{
             display: "flex",
             flexDirection: "column",
@@ -91,24 +81,35 @@ export function ServicesSection() {
             minHeight: "130px",
           }}
         >
-          <div
-            style={{
-              font: "600 10px/1.6 'Poppins',sans-serif",
-              letterSpacing: ".01em",
-              textTransform: "lowercase",
-              color: "rgba(17,19,23,.62)",
-            }}
-          >
-            {pad(activeSvc + 1)}° OF 08
-          </div>
-          <div
-            style={{
-              font: "400 18px/1.5 'Poppins',sans-serif",
-              textWrap: "pretty",
-            }}
-          >
-            {SVC[activeSvc][1]}
-          </div>
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeSvc}
+              initial={{ opacity: 0, y: 10, filter: "blur(4px)" }}
+              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              exit={{ opacity: 0, y: -8, filter: "blur(4px)" }}
+              transition={{ duration: 0.35, ease: EASE_OUT_EXPO }}
+              style={{ display: "flex", flexDirection: "column", gap: "14px" }}
+            >
+              <div
+                style={{
+                  font: "600 10px/1.6 'Poppins',sans-serif",
+                  letterSpacing: ".01em",
+                  textTransform: "lowercase",
+                  color: "rgba(17,19,23,.62)",
+                }}
+              >
+                {pad(activeSvc + 1)}° OF 08
+              </div>
+              <div
+                style={{
+                  font: "400 18px/1.5 'Poppins',sans-serif",
+                  textWrap: "pretty",
+                }}
+              >
+                {SVC[activeSvc][1]}
+              </div>
+            </motion.div>
+          </AnimatePresence>
         </div>
       </div>
 
@@ -135,7 +136,8 @@ export function ServicesSection() {
                 padding: "20px clamp(16px,3vw,48px)",
                 borderBottom: "1px solid #E6E7E9",
                 opacity: isActive ? 1 : 0.42,
-                transition: "opacity .25s",
+                transition: "opacity .3s cubic-bezier(0.16, 1, 0.3, 1), transform .3s cubic-bezier(0.16, 1, 0.3, 1)",
+                transform: isActive ? "translateX(4px)" : "translateX(0)",
               }}
             >
               <span
@@ -157,11 +159,14 @@ export function ServicesSection() {
                   fontSize: "clamp(22px,2.2vw,32px)",
                   lineHeight: 1.15,
                   fontStyle: isActive ? "italic" : "normal",
+                  transition: "font-style .2s ease",
                 }}
               >
                 {x[0]}
               </span>
-              <svg
+              <motion.svg
+                animate={{ x: isActive ? 4 : 0 }}
+                transition={{ duration: 0.3, ease: EASE_OUT_EXPO }}
                 width="12"
                 height="12"
                 viewBox="0 0 12 12"
@@ -171,7 +176,7 @@ export function ServicesSection() {
                 style={{ flex: "none" }}
               >
                 <path d="M3 9L9 3M4 3h5v5" />
-              </svg>
+              </motion.svg>
             </button>
           );
         })}

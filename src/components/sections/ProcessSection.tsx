@@ -1,6 +1,13 @@
 "use client";
 
 import React, { useState } from "react";
+import { motion } from "motion/react";
+import {
+  Reveal,
+  SplitHeading,
+  Stagger,
+  StaggerItem,
+} from "@/components/motion/primitives";
 
 const STEPS = [
   "Message us and tell us what you sell.",
@@ -24,7 +31,6 @@ export function ProcessSection() {
       }}
     >
       <div
-        data-reveal="1"
         style={{
           display: "flex",
           flexWrap: "wrap",
@@ -35,17 +41,23 @@ export function ProcessSection() {
         }}
       >
         <div style={{ display: "flex", flexDirection: "column", gap: "22px" }}>
-          <div
-            style={{
-              font: "500 13px/1 'Poppins',sans-serif",
-              letterSpacing: ".01em",
-              textTransform: "lowercase",
-              color: "rgba(17,19,23,.62)",
-            }}
-          >
-            03 — How we work
-          </div>
-          <h2
+          <Reveal delay={0}>
+            <div
+              style={{
+                font: "500 13px/1 'Poppins',sans-serif",
+                letterSpacing: ".01em",
+                textTransform: "lowercase",
+                color: "rgba(17,19,23,.62)",
+              }}
+            >
+              03 — How we work
+            </div>
+          </Reveal>
+          <SplitHeading
+            parts={[
+              { text: "Five steps" },
+              { text: "and you're live.", italic: true },
+            ]}
             style={{
               margin: 0,
               fontFamily: "'Bodoni Moda',serif",
@@ -54,68 +66,82 @@ export function ProcessSection() {
               lineHeight: 1,
               letterSpacing: "-.02em",
             }}
+          />
+        </div>
+        <Reveal delay={0.15}>
+          <div
+            style={{
+              font: "600 10px/1.8 'Poppins',sans-serif",
+              letterSpacing: ".01em",
+              textTransform: "lowercase",
+              color: "rgba(17,19,23,.62)",
+              whiteSpace: "nowrap",
+            }}
           >
-            Five steps <span style={{ fontStyle: "italic" }}>and you&apos;re live.</span>
-          </h2>
-        </div>
-        <div
-          style={{
-            font: "600 10px/1.8 'Poppins',sans-serif",
-            letterSpacing: ".01em",
-            textTransform: "lowercase",
-            color: "rgba(17,19,23,.62)",
-            whiteSpace: "nowrap",
-          }}
-        >
-          NDA within 48 hours
-        </div>
+            NDA within 48 hours
+          </div>
+        </Reveal>
       </div>
 
-      <div
+      <Stagger
+        stagger={0.08}
+        amount={0.15}
         style={{
           display: "grid",
           gridTemplateColumns: "repeat(auto-fit,minmax(min(100%,190px),1fr))",
           borderTop: "1px solid #111317",
         }}
       >
-        {STEPS.map((l, i) => (
-          <button
-            key={l}
-            onMouseEnter={() => setActiveStep(i)}
-            onClick={() => setActiveStep(i)}
-            data-reveal="1"
-            style={{
-              textAlign: "left",
-              display: "flex",
-              flexDirection: "column",
-              gap: "28px",
-              padding: "28px 24px 28px 0",
-              opacity: i <= activeStep ? 1 : 0.38,
-              transition: "opacity .25s",
-            }}
-          >
-            <span
-              style={{
-                fontFamily: "'Bodoni Moda',serif",
-                fontWeight: 500,
-                fontSize: "64px",
-                lineHeight: 0.9,
-              }}
-            >
-              {pad(i + 1)}
-            </span>
-            <span
-              style={{
-                font: "400 17px/1.45 'Poppins',sans-serif",
-                textWrap: "pretty",
-                maxWidth: "240px",
-              }}
-            >
-              {l}
-            </span>
-          </button>
-        ))}
-      </div>
+        {STEPS.map((l, i) => {
+          const isActive = i <= activeStep;
+          return (
+            <StaggerItem key={l}>
+              <motion.button
+                type="button"
+                onMouseEnter={() => setActiveStep(i)}
+                onClick={() => setActiveStep(i)}
+                whileHover={{ y: -4 }}
+                transition={{ type: "spring", stiffness: 350, damping: 25 }}
+                style={{
+                  width: "100%",
+                  textAlign: "left",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "28px",
+                  padding: "28px 24px 28px 0",
+                  opacity: isActive ? 1 : 0.38,
+                  transition: "opacity .3s cubic-bezier(0.2,0.7,0.2,1)",
+                  cursor: "pointer",
+                  background: "transparent",
+                  border: "none",
+                }}
+              >
+                <span
+                  style={{
+                    fontFamily: "'Bodoni Moda',serif",
+                    fontWeight: 500,
+                    fontSize: "64px",
+                    lineHeight: 0.9,
+                    color: "#111317",
+                  }}
+                >
+                  {pad(i + 1)}
+                </span>
+                <span
+                  style={{
+                    font: "400 17px/1.45 'Poppins',sans-serif",
+                    textWrap: "pretty",
+                    maxWidth: "240px",
+                    color: "#111317",
+                  }}
+                >
+                  {l}
+                </span>
+              </motion.button>
+            </StaggerItem>
+          );
+        })}
+      </Stagger>
     </section>
   );
 }

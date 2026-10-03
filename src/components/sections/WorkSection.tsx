@@ -1,4 +1,13 @@
+"use client";
+
 import React from "react";
+import { motion } from "motion/react";
+import {
+  Reveal,
+  SplitHeading,
+  Stagger,
+  StaggerItem,
+} from "@/components/motion/primitives";
 
 const REELS = [
   { n: "01", type: "Hotel" },
@@ -19,7 +28,6 @@ export function WorkSection() {
       style={{ borderBottom: "1px solid #E6E7E9" }}
     >
       <div
-        data-reveal="1"
         style={{
           display: "flex",
           flexWrap: "wrap",
@@ -30,17 +38,23 @@ export function WorkSection() {
         }}
       >
         <div style={{ display: "flex", flexDirection: "column", gap: "22px" }}>
-          <div
-            style={{
-              font: "500 13px/1 'Poppins',sans-serif",
-              letterSpacing: ".01em",
-              textTransform: "lowercase",
-              color: "rgba(17,19,23,.62)",
-            }}
-          >
-            01 — Work
-          </div>
-          <h2
+          <Reveal>
+            <div
+              style={{
+                font: "500 13px/1 'Poppins',sans-serif",
+                letterSpacing: ".01em",
+                textTransform: "lowercase",
+                color: "rgba(17,19,23,.62)",
+              }}
+            >
+              01 — Work
+            </div>
+          </Reveal>
+          <SplitHeading
+            parts={[
+              { text: "Reels that" },
+              { text: "get finished.", italic: true },
+            ]}
             style={{
               margin: 0,
               fontFamily: "'Bodoni Moda',serif",
@@ -49,25 +63,26 @@ export function WorkSection() {
               lineHeight: 1,
               letterSpacing: "-.02em",
             }}
+          />
+        </div>
+        <Reveal delay={0.2}>
+          <div
+            style={{
+              font: "600 10px/1.8 'Poppins',sans-serif",
+              letterSpacing: ".01em",
+              textTransform: "lowercase",
+              textAlign: "right",
+              color: "rgba(17,19,23,.62)",
+              whiteSpace: "nowrap",
+            }}
           >
-            Reels that <span style={{ fontStyle: "italic" }}>get finished.</span>
-          </h2>
-        </div>
-        <div
-          style={{
-            font: "600 10px/1.8 'Poppins',sans-serif",
-            letterSpacing: ".01em",
-            textTransform: "lowercase",
-            textAlign: "right",
-            color: "rgba(17,19,23,.62)",
-            whiteSpace: "nowrap",
-          }}
-        >
-          Autoplay muted · Tap to play
-        </div>
+            Autoplay muted · Tap to play
+          </div>
+        </Reveal>
       </div>
 
-      <div
+      <Stagger
+        stagger={0.07}
         style={{
           display: "grid",
           gridTemplateColumns: "repeat(auto-fill,minmax(min(46%,210px),1fr))",
@@ -76,83 +91,86 @@ export function WorkSection() {
         }}
       >
         {REELS.map((r) => (
-          <div
-            key={r.n}
-            data-reveal="1"
-            style={{ display: "flex", flexDirection: "column", gap: "12px" }}
-          >
-            <div
-              className="reel-card-box"
-              style={{
-                position: "relative",
-                aspectRatio: "9/16",
-                background: "#F4F4F5",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                overflow: "hidden",
-                cursor: "pointer",
-              }}
+          <StaggerItem key={r.n}>
+            <motion.div
+              whileHover={{ y: -6 }}
+              transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+              style={{ display: "flex", flexDirection: "column", gap: "12px" }}
             >
-              <span
+              <div
+                className="reel-card-box"
                 style={{
-                  font: "600 9px/1.6 'Poppins',sans-serif",
-                  letterSpacing: ".01em",
-                  textTransform: "lowercase",
-                  color: "rgba(17,19,23,.62)",
-                  textAlign: "center",
-                }}
-              >
-                Reel {r.n}<br />Poster + MP4
-              </span>
-              <span
-                style={{
-                  position: "absolute",
-                  right: "12px",
-                  bottom: "12px",
-                  width: "36px",
-                  height: "36px",
-                  borderRadius: "99px",
-                  background: "#FFFFFF",
+                  position: "relative",
+                  aspectRatio: "9/16",
+                  background: "#F4F4F5",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
+                  overflow: "hidden",
+                  cursor: "pointer",
                 }}
               >
-                <svg width="9" height="11" viewBox="0 0 10 12" fill="#111317">
-                  <path d="M0 0l10 6-10 6z" />
-                </svg>
-              </span>
-            </div>
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "baseline",
-              }}
-            >
-              <span
+                <span
+                  style={{
+                    font: "600 9px/1.6 'Poppins',sans-serif",
+                    letterSpacing: ".01em",
+                    textTransform: "lowercase",
+                    color: "rgba(17,19,23,.62)",
+                    textAlign: "center",
+                  }}
+                >
+                  Reel {r.n}<br />Poster + MP4
+                </span>
+                <span
+                  className="play-icon-btn"
+                  style={{
+                    position: "absolute",
+                    right: "12px",
+                    bottom: "12px",
+                    width: "36px",
+                    height: "36px",
+                    borderRadius: "99px",
+                    background: "#FFFFFF",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <svg width="9" height="11" viewBox="0 0 10 12" fill="#111317">
+                    <path d="M0 0l10 6-10 6z" />
+                  </svg>
+                </span>
+              </div>
+              <div
                 style={{
-                  fontFamily: "'Bodoni Moda',serif",
-                  fontStyle: "italic",
-                  fontSize: "20px",
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "baseline",
                 }}
               >
-                {r.type}
-              </span>
-              <span
-                style={{
-                  font: "500 12px/1 'Poppins',sans-serif",
-                  letterSpacing: ".01em",
-                  color: "rgba(17,19,23,.62)",
-                }}
-              >
-                {r.n}
-              </span>
-            </div>
-          </div>
+                <span
+                  style={{
+                    fontFamily: "'Bodoni Moda',serif",
+                    fontStyle: "italic",
+                    fontSize: "20px",
+                  }}
+                >
+                  {r.type}
+                </span>
+                <span
+                  style={{
+                    font: "500 12px/1 'Poppins',sans-serif",
+                    letterSpacing: ".01em",
+                    color: "rgba(17,19,23,.62)",
+                  }}
+                >
+                  {r.n}
+                </span>
+              </div>
+            </motion.div>
+          </StaggerItem>
         ))}
-      </div>
+      </Stagger>
     </section>
   );
 }

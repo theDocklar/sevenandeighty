@@ -7,12 +7,17 @@
   --border: #E6E7E9;
 }
 
+html {
+  scroll-behavior: auto; /* Let Lenis handle smooth scroll */
+}
+
 body {
   margin: 0;
   background: #FFFFFF;
   color: #111317;
   font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
 * {
@@ -42,12 +47,70 @@ button {
   color: #FFFFFF;
 }
 
-/* Animations matching original HTML DCLogic */
-@keyframes marqueeScroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+/* Word Mask for SplitHeading Reveals */
+.word-mask {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
 }
 
+.word-inner {
+  display: inline-block;
+  will-change: transform;
+}
+
+/* Nav Link */
+.site-nav {
+  display: flex;
+  gap: clamp(16px, 2.4vw, 36px);
+  overflow-x: auto;
+  white-space: nowrap;
+  flex: 0 1 auto;
+  min-width: 0;
+  scrollbar-width: none;
+}
+
+.nav-link {
+  color: rgba(17, 19, 23, 0.7);
+  transition: color 0.25s ease;
+}
+
+.nav-link:hover,
+.nav-link[data-active="true"] {
+  color: #111317;
+}
+
+/* Button & Arrow Hover Animations */
+.btn-arrow {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-whatsapp-hero:hover .btn-arrow,
+.btn-whatsapp-header:hover .btn-arrow {
+  transform: translateX(4px);
+}
+
+.btn-whatsapp-header {
+  transition: background 0.3s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+}
+
+.btn-whatsapp-header:hover {
+  background: #111317 !important;
+  color: #FFFFFF !important;
+}
+
+.btn-whatsapp-hero {
+  transition: opacity 0.25s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-whatsapp-hero:hover {
+  color: #FFFFFF !important;
+  opacity: 0.92 !important;
+}
+
+/* Marquee Styles */
 .marquee-viewport {
   flex: 1 1 400px;
   min-width: 0;
@@ -73,7 +136,6 @@ button {
   animation-play-state: paused;
 }
 
-/* Each group is identical; translating by -50% loops seamlessly */
 .marquee-group {
   display: flex;
   flex-wrap: nowrap;
@@ -83,7 +145,6 @@ button {
   padding-right: 64px;
 }
 
-/* Override Tailwind preflight (max-width:100%; height:auto) that shrank logos */
 .marquee-logo {
   display: block;
   flex: none;
@@ -92,8 +153,19 @@ button {
   object-fit: contain;
   filter: grayscale(1) brightness(.35);
   user-select: none;
+  transition: filter 0.3s ease, opacity 0.3s ease;
 }
 
+.marquee-logo:hover {
+  filter: grayscale(0) brightness(1);
+}
+
+@keyframes marqueeScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Pulse Animation */
 @keyframes pulseDot {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.2; }
@@ -103,6 +175,7 @@ button {
   animation: pulseDot 1.8s infinite;
 }
 
+/* Float Animations for Hero Cards */
 @keyframes float0 {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-10px); }
@@ -129,51 +202,28 @@ button {
   will-change: transform;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .marquee-track,
-  [data-pulse="1"],
-  [data-pulse],
-  [data-float="0"],
-  [data-float="1"],
-  [data-float="2"] {
-    animation: none !important;
-  }
-}
-
-/* Replicating style-hover states from original HTML */
-.nav-link {
-  transition: text-decoration 0.2s;
-}
-.nav-link:hover {
-  text-decoration: underline;
-  text-underline-offset: 8px;
-}
-
-.btn-whatsapp-header {
-  transition: background 0.25s, color 0.25s;
-}
-.btn-whatsapp-header:hover {
-  background: #111317 !important;
-  color: #FFFFFF !important;
-}
-
-.btn-whatsapp-hero {
-  transition: opacity 0.25s;
-}
-.btn-whatsapp-hero:hover {
-  color: #FFFFFF !important;
-  opacity: 0.88 !important;
-}
-
+/* Reel Card Hover */
 .reel-card-box {
-  transition: background 0.3s;
+  transition: background 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .reel-card-box:hover {
   background: #ECEDEE !important;
 }
 
+.play-icon-btn {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background 0.25s ease;
+}
+.reel-card-box:hover .play-icon-btn {
+  transform: scale(1.1);
+  background: #111317;
+}
+.reel-card-box:hover .play-icon-btn svg {
+  fill: #FFFFFF;
+}
+
+/* Kit Card Hover */
 .kit-card-box {
-  transition: background 0.35s, color 0.35s;
+  transition: background 0.35s cubic-bezier(0.16, 1, 0.3, 1), color 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .kit-card-box:hover {
   background: #111317 !important;
@@ -183,8 +233,9 @@ button {
   color: #FFFFFF !important;
 }
 
+/* Contact Card Hover */
 .contact-card-box {
-  transition: background 0.3s, color 0.3s;
+  transition: background 0.35s cubic-bezier(0.16, 1, 0.3, 1), color 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .contact-card-box:hover {
   background: #111317 !important;
@@ -192,6 +243,18 @@ button {
 }
 .contact-card-box:hover span {
   color: #FFFFFF !important;
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track,
+  [data-pulse="1"],
+  [data-pulse],
+  [data-float="0"],
+  [data-float="1"],
+  [data-float="2"] {
+    animation: none !important;
+  }
 }
 
 /* Custom subtle scrollbar */

@@ -16,9 +16,39 @@ import {
 } from "@/components/motion/primitives";
 
 const HERO_REELS = [
-  { n: "01", w: "28%", i: "0", depth: 14, scroll: -60, tilt: -5 },
-  { n: "02", w: "38%", i: "1", depth: 26, scroll: -130, tilt: 0 },
-  { n: "03", w: "28%", i: "2", depth: 18, scroll: -90, tilt: 5 },
+  {
+    n: "01",
+    title: "Ep. 01 — Web",
+    sub: "Retainer Strategy",
+    videoSrc: "/videos/ep01-website.mp4",
+    w: "28%",
+    i: "0",
+    depth: 14,
+    scroll: -60,
+    tilt: -5,
+  },
+  {
+    n: "02",
+    title: "SQALO Ravello",
+    sub: "7°N 80°E · Live Shoot",
+    videoSrc: "/videos/sqalo-ravello.mp4",
+    w: "38%",
+    i: "1",
+    depth: 26,
+    scroll: -130,
+    tilt: 0,
+  },
+  {
+    n: "03",
+    title: "On-Set BTS",
+    sub: "Raw Production",
+    videoSrc: "/videos/bts-onset.mov",
+    w: "28%",
+    i: "2",
+    depth: 18,
+    scroll: -90,
+    tilt: 5,
+  },
 ];
 
 function HeroReel({
@@ -38,7 +68,7 @@ function HeroReel({
   const pointerY = useTransform(my, (v) => v * reel.depth);
   const y = useTransform([scrollY, pointerY], ([a, b]) => (a as number) + (b as number));
   const x = useTransform(mx, (v) => v * reel.depth);
-  const isVideo = reel.n === "02";
+  const isCenter = reel.n === "02";
 
   return (
     <motion.div style={{ width: reel.w, x, y }}>
@@ -54,24 +84,26 @@ function HeroReel({
             position: "relative",
             aspectRatio: "9/16",
             background: "#111317",
-            border: "1px solid #111317",
+            border: isCenter ? "1px solid #111317" : "1px solid rgba(17,19,23,0.3)",
             borderRadius: "4px",
             overflow: "hidden",
             display: "flex",
             flexDirection: "column",
             justifyContent: "space-between",
-            padding: "12px",
+            padding: "10px",
             font: "600 9px/1.4 'Poppins',sans-serif",
             letterSpacing: ".01em",
             textTransform: "lowercase",
             color: "#FFFFFF",
-            boxShadow: "0 18px 40px -10px rgba(0,0,0,0.22)",
+            boxShadow: isCenter
+              ? "0 20px 48px -12px rgba(0,0,0,0.35)"
+              : "0 12px 30px -10px rgba(0,0,0,0.2)",
           }}
         >
-          {isVideo ? (
+          {reel.videoSrc ? (
             <>
               <video
-                src="/videos/sqalo-ravello.mp4"
+                src={reel.videoSrc}
                 autoPlay
                 loop
                 muted
@@ -91,7 +123,7 @@ function HeroReel({
                   position: "absolute",
                   inset: 0,
                   background:
-                    "linear-gradient(180deg, rgba(0,0,0,0.5) 0%, transparent 40%, rgba(0,0,0,0.7) 100%)",
+                    "linear-gradient(180deg, rgba(0,0,0,0.5) 0%, transparent 40%, rgba(0,0,0,0.75) 100%)",
                   zIndex: 1,
                   pointerEvents: "none",
                 }}
@@ -106,18 +138,17 @@ function HeroReel({
               display: "flex",
               justifyContent: "space-between",
               alignItems: "center",
-              color: isVideo ? "#FFFFFF" : "#111317",
+              color: "#FFFFFF",
             }}
           >
-            <span>{isVideo ? "SQALO Ravello" : `Reel ${reel.n}`}</span>
+            <span style={{ textShadow: "0 1px 3px rgba(0,0,0,0.6)" }}>{reel.title}</span>
             <span
               data-pulse="1"
               style={{
                 width: 7,
                 height: 7,
                 borderRadius: 99,
-                background: isVideo ? "#4ADE80" : "#111317",
-                border: isVideo ? "none" : "1px solid #111317",
+                background: isCenter ? "#4ADE80" : "#FFFFFF",
               }}
             />
           </span>
@@ -126,11 +157,12 @@ function HeroReel({
             style={{
               position: "relative",
               zIndex: 2,
-              font: "500 10px/1.2 'Poppins',sans-serif",
-              color: isVideo ? "rgba(255,255,255,0.85)" : "rgba(17,19,23,.62)",
+              font: "500 9px/1.2 'Poppins',sans-serif",
+              color: "rgba(255,255,255,0.9)",
+              textShadow: "0 1px 3px rgba(0,0,0,0.6)",
             }}
           >
-            {isVideo ? "7°N 80°E · Live Shoot" : "4K Cinema · In-House"}
+            {reel.sub}
           </span>
         </div>
       </motion.div>

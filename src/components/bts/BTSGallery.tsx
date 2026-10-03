@@ -20,22 +20,24 @@ const GALLERY_ITEMS = [
     caption: "Live footage captured on set for SQALO Ravello with wide prime optics and cinema picture profiles.",
   },
   {
+    title: "Episode 01 — Pipeline & Ingest",
+    category: "Production Pipeline",
+    aspect: "9/16",
+    videoSrc: "/videos/ep01-website.mp4",
+    caption: "Same-night proxy ingest, multi-cam timeline assembly, and 48-hour delivery workflow.",
+  },
+  {
+    title: "On-Set Raw Field Cam",
+    category: "BTS & Crew Dynamics",
+    aspect: "9/16",
+    videoSrc: "/videos/bts-onset.mov",
+    caption: "Raw behind-the-scenes takes tracking directors, lighting positioning, and gimbal passes.",
+  },
+  {
     title: "DJI Avata 2 Indoor Flight",
     category: "FPV Flythrough",
     aspect: "16/9",
     caption: "Custom ducted propellers allowing safe indoor flight within millimeters of people and decor.",
-  },
-  {
-    title: "Golden Hour Ocean Tracking",
-    category: "Location · Galle",
-    aspect: "4/3",
-    caption: "Capturing coastal surf breaks with natural sunset backlighting.",
-  },
-  {
-    title: "Mobile Audio & Lavalier Pack",
-    category: "Crisp Audio",
-    aspect: "1/1",
-    caption: "Wireless directional mics capturing the hiss of the espresso machine and crunch of sourdough.",
   },
   {
     title: "Davinci Resolve Color Suite",

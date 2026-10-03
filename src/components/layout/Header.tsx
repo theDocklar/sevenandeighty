@@ -1,6 +1,8 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import {
   motion,
   useMotionValueEvent,
@@ -9,17 +11,19 @@ import {
 } from "motion/react";
 import { EASE_OUT_EXPO } from "@/components/motion/primitives";
 
-const NAV = [
-  { label: "work", id: "work" },
-  { label: "services", id: "services" },
-  { label: "process", id: "process" },
-  { label: "kit", id: "kit" },
-  { label: "contact", id: "contact" },
+const NAV_ITEMS = [
+  { label: "work", href: "/#work", sectionId: "work" },
+  { label: "services", href: "/#services", sectionId: "services" },
+  { label: "process", href: "/#process", sectionId: "process" },
+  { label: "kit", href: "/#kit", sectionId: "kit" },
+  { label: "behind the scenes", href: "/bts", sectionId: "bts" },
+  { label: "contact", href: "/#contact", sectionId: "contact" },
 ];
 
 export function Header() {
+  const pathname = usePathname();
   const [hidden, setHidden] = useState(false);
-  const [active, setActive] = useState("");
+  const [activeSection, setActiveSection] = useState("");
   const { scrollY, scrollYProgress } = useScroll();
   const progress = useSpring(scrollYProgress, {
     stiffness: 120,
@@ -33,22 +37,35 @@ export function Header() {
     setHidden(y > prev && y > 160);
   });
 
-  // Track which section is in the middle of the viewport.
+  // Track which section is in view on the home page.
   useEffect(() => {
+    if (pathname !== "/") {
+      if (pathname.startsWith("/bts")) {
+        setActiveSection("bts");
+      } else if (pathname.startsWith("/inquire")) {
+        setActiveSection("inquire");
+      } else {
+        setActiveSection("");
+      }
+      return;
+    }
+
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {
-          if (e.isIntersecting) setActive(e.target.id);
+          if (e.isIntersecting) setActiveSection(e.target.id);
         });
       },
       { rootMargin: "-45% 0px -50% 0px" }
     );
-    ["top", ...NAV.map((n) => n.id)].forEach((id) => {
+
+    ["top", "work", "services", "process", "kit", "contact"].forEach((id) => {
       const el = document.getElementById(id);
       if (el) io.observe(el);
     });
+
     return () => io.disconnect();
-  }, []);
+  }, [pathname]);
 
   return (
     <motion.header
@@ -75,26 +92,35 @@ export function Header() {
           minHeight: "76px",
         }}
       >
-        <a
-          href="#top"
+        <Link
+          href="/"
           aria-label="Seven & Eighty — back to top"
-          style={{ display: "flex", alignItems: "center", flex: "none", padding: "18px 0" }}
+          style={{
+            display: "flex",
+            alignItems: "center",
+            flex: "none",
+            padding: "18px 0",
+          }}
         >
           <img
             src="/brand/seven-and-eighty-horizontal-black-transparent.svg"
             alt="Seven & Eighty"
             className="header-logo"
-            style={{ height: "clamp(20px,2.2vw,28px)", width: "auto", display: "block" }}
+            style={{
+              height: "clamp(20px,2.2vw,28px)",
+              width: "auto",
+              display: "block",
+            }}
           />
-        </a>
+        </Link>
 
         <nav className="site-nav" aria-label="Primary">
-          {NAV.map((item) => {
-            const isActive = active === item.id;
+          {NAV_ITEMS.map((item) => {
+            const isActive = activeSection === item.sectionId;
             return (
-              <a
-                key={item.id}
-                href={`#${item.id}`}
+              <Link
+                key={item.label}
+                href={item.href}
                 className="nav-link"
                 data-active={isActive}
                 aria-current={isActive ? "true" : undefined}
@@ -104,6 +130,8 @@ export function Header() {
                   font: "500 13px/1 'Poppins',sans-serif",
                   letterSpacing: ".01em",
                   textTransform: "lowercase",
+                  textDecoration: "none",
+                  color: "inherit",
                 }}
               >
                 {item.label}
@@ -121,36 +149,45 @@ export function Header() {
                     }}
                   />
                 )}
-              </a>
+              </Link>
             );
           })}
         </nav>
 
-        <a
-          href="https://wa.me/94775146688"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="btn-whatsapp-header"
-          style={{
-            flex: "none",
-            display: "flex",
-            alignItems: "center",
-            gap: "10px",
-            border: "1px solid #111317",
-            borderRadius: "99px",
-            padding: "12px 20px",
-            font: "500 13px/1 'Poppins',sans-serif",
-            letterSpacing: ".01em",
-            textTransform: "lowercase",
-            whiteSpace: "nowrap",
-          }}
-        >
-          <span
-            data-pulse="1"
-            style={{ width: 6, height: 6, borderRadius: 99, background: "currentColor" }}
-          />
-          WhatsApp
-        </a>
+        <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+          <Link
+            href="/inquire"
+            className="btn-whatsapp-header"
+            style={{
+              flex: "none",
+              display: "flex",
+              alignItems: "center",
+              gap: "10px",
+              border: "1px solid #111317",
+              background: pathname === "/inquire" ? "#111317" : "transparent",
+              color: pathname === "/inquire" ? "#FFFFFF" : "#111317",
+              borderRadius: "99px",
+              padding: "12px 22px",
+              font: "500 13px/1 'Poppins',sans-serif",
+              letterSpacing: ".01em",
+              textTransform: "lowercase",
+              whiteSpace: "nowrap",
+              textDecoration: "none",
+              transition: "all .2s",
+            }}
+          >
+            <span
+              data-pulse="1"
+              style={{
+                width: 6,
+                height: 6,
+                borderRadius: 99,
+                background: pathname === "/inquire" ? "#FFFFFF" : "#0D3B3A",
+              }}
+            />
+            Inquire
+          </Link>
+        </div>
       </div>
 
       {/* Scroll progress */}

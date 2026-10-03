@@ -85,7 +85,8 @@ export function Footer() {
             display: "flex",
             flexWrap: "wrap",
             justifyContent: "space-between",
-            gap: "12px 24px",
+            alignItems: "center",
+            gap: "16px 24px",
             background: "#FFFFFF",
             paddingTop: "20px",
             borderTop: "1px solid #E6E7E9",
@@ -98,24 +99,60 @@ export function Footer() {
           <span style={{ whiteSpace: "nowrap" }}>
             Seven and Eighty · 7°N 80°E
           </span>
-          <a
-            href="https://instagram.com/7n80e"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              color: "inherit",
-              textDecoration: "none",
-              transition: "color .2s",
-            }}
-            onMouseEnter={(e) =>
-              (e.currentTarget.style.color = "#111317")
-            }
-            onMouseLeave={(e) =>
-              (e.currentTarget.style.color = "rgba(17,19,23,.62)")
-            }
-          >
-            @7n80e
-          </a>
+
+          <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
+            <a
+              href="/bts"
+              style={{
+                color: "inherit",
+                textDecoration: "none",
+                transition: "color .2s",
+              }}
+              onMouseEnter={(e) =>
+                (e.currentTarget.style.color = "#111317")
+              }
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.color = "rgba(17,19,23,.62)")
+              }
+            >
+              behind the scenes
+            </a>
+            <a
+              href="/inquire"
+              style={{
+                color: "inherit",
+                textDecoration: "none",
+                transition: "color .2s",
+              }}
+              onMouseEnter={(e) =>
+                (e.currentTarget.style.color = "#111317")
+              }
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.color = "rgba(17,19,23,.62)")
+              }
+            >
+              inquire
+            </a>
+            <a
+              href="https://instagram.com/7n80e"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                color: "inherit",
+                textDecoration: "none",
+                transition: "color .2s",
+              }}
+              onMouseEnter={(e) =>
+                (e.currentTarget.style.color = "#111317")
+              }
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.color = "rgba(17,19,23,.62)")
+              }
+            >
+              @7n80e
+            </a>
+          </div>
+
           <span style={{ whiteSpace: "nowrap" }}>
             © 2026 sevenandeighty.com
           </span>

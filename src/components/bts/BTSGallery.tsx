@@ -13,10 +13,11 @@ import {
 
 const GALLERY_ITEMS = [
   {
-    title: "Sony A7 III Cinema Rig",
+    title: "Sony A7 III & Studio Rig",
     category: "Optics & Camera",
-    aspect: "4/3",
-    caption: "Equipped with wide prime lenses for maximum low-light restaurant & bar capture.",
+    aspect: "9/16",
+    videoSrc: "/videos/sqalo-ravello.mp4",
+    caption: "Live footage captured on set for SQALO Ravello with wide prime optics and cinema picture profiles.",
   },
   {
     title: "DJI Avata 2 Indoor Flight",
@@ -153,22 +154,78 @@ export function BTSGallery() {
                 <span>7°N 80°E</span>
               </div>
 
-              {/* Photo Box Placeholder */}
+              {/* Photo / Video Box */}
               <div
                 style={{
+                  position: "relative",
                   aspectRatio: item.aspect,
                   background: "rgba(13, 59, 58, 0.05)",
-                  borderRadius: "3px",
+                  borderRadius: "4px",
+                  overflow: "hidden",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  font: "600 10px/1 'Poppins',sans-serif",
-                  letterSpacing: ".06em",
-                  color: "#0D3B3A",
-                  border: "1px dashed rgba(13, 59, 58, 0.2)",
+                  border: item.videoSrc
+                    ? "1px solid #111317"
+                    : "1px dashed rgba(13, 59, 58, 0.2)",
                 }}
               >
-                ON-SET PHOTO ARCHIVE
+                {item.videoSrc ? (
+                  <>
+                    <video
+                      src={item.videoSrc}
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      preload="metadata"
+                      style={{
+                        position: "absolute",
+                        inset: 0,
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                      }}
+                    />
+                    <div
+                      style={{
+                        position: "absolute",
+                        inset: 0,
+                        background:
+                          "linear-gradient(180deg, rgba(0,0,0,0.3) 0%, transparent 60%, rgba(0,0,0,0.6) 100%)",
+                        pointerEvents: "none",
+                      }}
+                    />
+                    <div
+                      style={{
+                        position: "absolute",
+                        top: "10px",
+                        left: "10px",
+                        zIndex: 2,
+                        background: "rgba(0,0,0,0.65)",
+                        backdropFilter: "blur(4px)",
+                        color: "#FFFFFF",
+                        padding: "3px 8px",
+                        borderRadius: "2px",
+                        font: "600 8px/1 'Poppins',sans-serif",
+                        letterSpacing: ".04em",
+                        textTransform: "uppercase",
+                      }}
+                    >
+                      Live Footage
+                    </div>
+                  </>
+                ) : (
+                  <span
+                    style={{
+                      font: "600 10px/1 'Poppins',sans-serif",
+                      letterSpacing: ".06em",
+                      color: "#0D3B3A",
+                    }}
+                  >
+                    ON-SET PHOTO ARCHIVE
+                  </span>
+                )}
               </div>
 
               <div>

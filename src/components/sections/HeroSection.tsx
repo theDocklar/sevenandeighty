@@ -38,6 +38,7 @@ function HeroReel({
   const pointerY = useTransform(my, (v) => v * reel.depth);
   const y = useTransform([scrollY, pointerY], ([a, b]) => (a as number) + (b as number));
   const x = useTransform(mx, (v) => v * reel.depth);
+  const isVideo = reel.n === "02";
 
   return (
     <motion.div style={{ width: reel.w, x, y }}>
@@ -50,26 +51,87 @@ function HeroReel({
           data-float={reel.i}
           className="hero-reel"
           style={{
+            position: "relative",
             aspectRatio: "9/16",
-            background: "#FFFFFF",
+            background: "#111317",
             border: "1px solid #111317",
+            borderRadius: "4px",
+            overflow: "hidden",
             display: "flex",
             flexDirection: "column",
             justifyContent: "space-between",
-            padding: "10px",
-            font: "600 8px/1.4 'Poppins',sans-serif",
+            padding: "12px",
+            font: "600 9px/1.4 'Poppins',sans-serif",
             letterSpacing: ".01em",
             textTransform: "lowercase",
+            color: "#FFFFFF",
+            boxShadow: "0 18px 40px -10px rgba(0,0,0,0.22)",
           }}
         >
-          <span style={{ display: "flex", justifyContent: "space-between" }}>
-            <span>Reel {reel.n}</span>
+          {isVideo ? (
+            <>
+              <video
+                src="/videos/sqalo-ravello.mp4"
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="metadata"
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                  zIndex: 0,
+                }}
+              />
+              <div
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  background:
+                    "linear-gradient(180deg, rgba(0,0,0,0.5) 0%, transparent 40%, rgba(0,0,0,0.7) 100%)",
+                  zIndex: 1,
+                  pointerEvents: "none",
+                }}
+              />
+            </>
+          ) : null}
+
+          <span
+            style={{
+              position: "relative",
+              zIndex: 2,
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              color: isVideo ? "#FFFFFF" : "#111317",
+            }}
+          >
+            <span>{isVideo ? "SQALO Ravello" : `Reel ${reel.n}`}</span>
             <span
               data-pulse="1"
-              style={{ width: 7, height: 7, borderRadius: 99, border: "1px solid #111317" }}
+              style={{
+                width: 7,
+                height: 7,
+                borderRadius: 99,
+                background: isVideo ? "#4ADE80" : "#111317",
+                border: isVideo ? "none" : "1px solid #111317",
+              }}
             />
           </span>
-          <span style={{ color: "rgba(17,19,23,.62)" }}>Poster / video</span>
+
+          <span
+            style={{
+              position: "relative",
+              zIndex: 2,
+              font: "500 10px/1.2 'Poppins',sans-serif",
+              color: isVideo ? "rgba(255,255,255,0.85)" : "rgba(17,19,23,.62)",
+            }}
+          >
+            {isVideo ? "7°N 80°E · Live Shoot" : "4K Cinema · In-House"}
+          </span>
         </div>
       </motion.div>
     </motion.div>

@@ -78,7 +78,7 @@ export function ServicesSection() {
             display: "flex",
             flexDirection: "column",
             gap: "14px",
-            minHeight: "130px",
+            minHeight: "150px",
           }}
         >
           <AnimatePresence mode="wait">
@@ -104,10 +104,73 @@ export function ServicesSection() {
                 style={{
                   font: "400 18px/1.5 'Poppins',sans-serif",
                   textWrap: "pretty",
+                  color: "#111317",
                 }}
               >
                 {SVC[activeSvc][1]}
               </div>
+
+              {/* The Boat Group partnership badge for Web design and development (index 4) */}
+              {activeSvc === 4 && (
+                <motion.a
+                  href="https://theboatgrp.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.3, delay: 0.1 }}
+                  style={{
+                    marginTop: "6px",
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: "8px",
+                    padding: "8px 16px",
+                    borderRadius: "99px",
+                    background: "rgba(17,19,23,.04)",
+                    border: "1px solid rgba(17,19,23,.12)",
+                    textDecoration: "none",
+                    color: "#111317",
+                    font: "500 11px/1 'Poppins',sans-serif",
+                    letterSpacing: ".01em",
+                    textTransform: "lowercase",
+                    alignSelf: "flex-start",
+                    transition: "all .2s ease",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = "#111317";
+                    e.currentTarget.style.color = "#FFFFFF";
+                    e.currentTarget.style.borderColor = "#111317";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = "rgba(17,19,23,.04)";
+                    e.currentTarget.style.color = "#111317";
+                    e.currentTarget.style.borderColor = "rgba(17,19,23,.12)";
+                  }}
+                >
+                  <span style={{ opacity: 0.75 }}>Engineered in partnership with</span>
+                  <img
+                    src="/partners/theboat.png"
+                    alt="The Boat Group"
+                    style={{
+                      height: "13px",
+                      width: "auto",
+                      display: "inline-block",
+                      objectFit: "contain",
+                    }}
+                  />
+                  <span style={{ fontWeight: 600 }}>theboatgrp.com</span>
+                  <svg
+                    width="10"
+                    height="10"
+                    viewBox="0 0 12 12"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.4"
+                  >
+                    <path d="M3 9L9 3M4 3h5v5" />
+                  </svg>
+                </motion.a>
+              )}
             </motion.div>
           </AnimatePresence>
         </div>
@@ -160,9 +223,36 @@ export function ServicesSection() {
                   lineHeight: 1.15,
                   fontStyle: isActive ? "italic" : "normal",
                   transition: "font-style .2s ease",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "12px",
+                  flexWrap: "wrap",
                 }}
               >
-                {x[0]}
+                <span>{x[0]}</span>
+                {i === 4 && (
+                  <span
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: "5px",
+                      font: "500 10px/1 'Poppins',sans-serif",
+                      fontStyle: "normal",
+                      letterSpacing: ".02em",
+                      background: "rgba(17,19,23,.05)",
+                      padding: "3px 9px",
+                      borderRadius: "99px",
+                      color: "rgba(17,19,23,.75)",
+                    }}
+                  >
+                    <img
+                      src="/partners/theboat.png"
+                      alt="The Boat Group"
+                      style={{ height: "10px", width: "auto" }}
+                    />
+                    theboatgrp.com
+                  </span>
+                )}
               </span>
               <motion.svg
                 animate={{ x: isActive ? 4 : 0 }}

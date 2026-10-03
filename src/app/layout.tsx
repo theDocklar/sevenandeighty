@@ -93,6 +93,15 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+  verification: {
+    google:
+      process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION ||
+      "google-site-verification=googlee95c8d0sevenandeighty",
+    yandex: process.env.NEXT_PUBLIC_YANDEX_VERIFICATION,
+    other: {
+      "facebook-domain-verification": ["sevenandeighty-fb-verify"],
+    },
+  },
 };
 
 export const viewport: Viewport = {

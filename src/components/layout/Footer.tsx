@@ -88,7 +88,7 @@ export function Footer() {
             alignItems: "center",
             gap: "16px 24px",
             background: "#FFFFFF",
-            paddingTop: "20px",
+            paddingTop: "24px",
             borderTop: "1px solid #E6E7E9",
             font: "600 10px/1.6 'Poppins',sans-serif",
             letterSpacing: ".01em",
@@ -153,9 +153,61 @@ export function Footer() {
             </a>
           </div>
 
-          <span style={{ whiteSpace: "nowrap" }}>
-            © 2026 sevenandeighty.com
-          </span>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "18px",
+              flexWrap: "wrap",
+            }}
+          >
+            <a
+              href="https://theboatgrp.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Development by The Boat Group"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "7px",
+                color: "rgba(17,19,23,.75)",
+                textDecoration: "none",
+                font: "500 10px/1 'Poppins',sans-serif",
+                letterSpacing: ".02em",
+                textTransform: "lowercase",
+                transition: "color .2s",
+                background: "rgba(17,19,23,.03)",
+                padding: "6px 12px",
+                borderRadius: "99px",
+                border: "1px solid rgba(17,19,23,.08)",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.color = "#111317";
+                e.currentTarget.style.borderColor = "#111317";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.color = "rgba(17,19,23,.75)";
+                e.currentTarget.style.borderColor = "rgba(17,19,23,.08)";
+              }}
+            >
+              <span>dev by</span>
+              <img
+                src="/partners/theboat.png"
+                alt="The Boat Group"
+                style={{
+                  height: "13px",
+                  width: "auto",
+                  display: "inline-block",
+                  objectFit: "contain",
+                }}
+              />
+              <span style={{ fontWeight: 600 }}>theboatgrp.com</span>
+            </a>
+
+            <span style={{ whiteSpace: "nowrap" }}>
+              © 2026 sevenandeighty.com
+            </span>
+          </div>
         </div>
       </Reveal>
     </footer>

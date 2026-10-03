@@ -27,11 +27,11 @@ const GALLERY_ITEMS = [
     caption: "High-contrast commercial lighting, fast-paced macro cuts, and precision sound design for AVVOX.",
   },
   {
-    title: "Hospitality & Villa Cinematics",
+    title: "Master Hospitality & Villa Reel",
     category: "Resort & Architectural",
     aspect: "9/16",
-    videoSrc: "/videos/hospitality-reel.mp4",
-    caption: "Fluid architectural walkthroughs, natural light tracking, and luxury hospitality aesthetic.",
+    videoSrc: "/videos/whatsapp-reel.mp4",
+    caption: "Fluid architectural walkthroughs, natural sunset light tracking, and luxury hospitality grading.",
   },
   {
     title: "Episode 01 — Pipeline & Ingest",

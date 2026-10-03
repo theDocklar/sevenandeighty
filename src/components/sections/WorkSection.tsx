@@ -26,10 +26,10 @@ const REELS = [
   },
   {
     n: "03",
-    title: "Luxury Villa Showcase",
-    type: "Resort & Hospitality",
-    videoSrc: "/videos/hospitality-reel.mp4",
-    tag: "Hospitality Cinema",
+    title: "Master Hospitality Reel",
+    type: "Resort & Luxury Villa",
+    videoSrc: "/videos/whatsapp-reel.mp4",
+    tag: "Master Deliverable",
   },
   {
     n: "04",
@@ -45,7 +45,13 @@ const REELS = [
     videoSrc: "/videos/bts-onset.mov",
     tag: "Behind The Scenes",
   },
-  { n: "06", title: "Aura Colombo", type: "Culinary & Dining", tag: "Micro-Details" },
+  {
+    n: "06",
+    title: "Villa Mirissa",
+    type: "Luxury Stay",
+    videoSrc: "/videos/hospitality-reel.mp4",
+    tag: "Architectural",
+  },
   { n: "07", title: "Tropic Co.", type: "Beverage & Bar", tag: "High Speed" },
   { n: "08", title: "Southern Coastline", type: "FPV Flythrough", tag: "Avata 2 Flight" },
 ];

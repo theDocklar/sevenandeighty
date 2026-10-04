@@ -26,7 +26,7 @@ export function ProcessSection() {
       id="process"
       data-screen-label="05 How we work"
       style={{
-        borderBottom: "1px solid #E6E7E9",
+        borderBottom: "1px solid var(--site-border)",
         padding: "clamp(64px,8vw,112px) clamp(16px,4vw,56px)",
       }}
     >
@@ -47,7 +47,7 @@ export function ProcessSection() {
                 font: "500 13px/1 'Poppins',sans-serif",
                 letterSpacing: ".01em",
                 textTransform: "lowercase",
-                color: "rgba(17,19,23,.62)",
+                color: "color-mix(in srgb, var(--site-fg) 62%, transparent)",
               }}
             >
               03 — How we work
@@ -74,7 +74,7 @@ export function ProcessSection() {
               font: "600 10px/1.8 'Poppins',sans-serif",
               letterSpacing: ".01em",
               textTransform: "lowercase",
-              color: "rgba(17,19,23,.62)",
+              color: "color-mix(in srgb, var(--site-fg) 62%, transparent)",
               whiteSpace: "nowrap",
             }}
           >
@@ -89,7 +89,7 @@ export function ProcessSection() {
         style={{
           display: "grid",
           gridTemplateColumns: "repeat(auto-fit,minmax(min(100%,190px),1fr))",
-          borderTop: "1px solid #111317",
+          borderTop: "1px solid var(--site-fg)",
         }}
       >
         {STEPS.map((l, i) => {
@@ -122,7 +122,7 @@ export function ProcessSection() {
                     fontWeight: 500,
                     fontSize: "64px",
                     lineHeight: 0.9,
-                    color: "#111317",
+                    color: "var(--site-fg)",
                   }}
                 >
                   {pad(i + 1)}
@@ -132,7 +132,7 @@ export function ProcessSection() {
                     font: "400 17px/1.45 'Poppins',sans-serif",
                     textWrap: "pretty",
                     maxWidth: "240px",
-                    color: "#111317",
+                    color: "var(--site-fg)",
                   }}
                 >
                   {l}

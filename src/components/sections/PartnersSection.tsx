@@ -35,7 +35,7 @@ export function PartnersSection() {
         display: "flex",
         flexWrap: "wrap",
         alignItems: "stretch",
-        borderBottom: "1px solid #E6E7E9",
+        borderBottom: "1px solid var(--site-border)",
       }}
     >
       <div
@@ -45,7 +45,7 @@ export function PartnersSection() {
           alignItems: "center",
           gap: "16px",
           padding: "28px clamp(16px,4vw,56px)",
-          borderRight: "1px solid #E6E7E9",
+          borderRight: "1px solid var(--site-border)",
         }}
       >
         <span

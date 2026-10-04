@@ -62,7 +62,7 @@ export function WorkSection() {
     <section
       id="work"
       data-screen-label="03 Work"
-      style={{ borderBottom: "1px solid #E6E7E9" }}
+      style={{ borderBottom: "1px solid var(--site-border)" }}
     >
       <div
         style={{
@@ -82,7 +82,7 @@ export function WorkSection() {
                 font: "500 13px/1 'Poppins',sans-serif",
                 letterSpacing: ".01em",
                 textTransform: "lowercase",
-                color: "rgba(17,19,23,.62)",
+                color: "color-mix(in srgb, var(--site-fg) 62%, transparent)",
               }}
             >
               01 — Work
@@ -110,7 +110,7 @@ export function WorkSection() {
               letterSpacing: ".01em",
               textTransform: "lowercase",
               textAlign: "right",
-              color: "rgba(17,19,23,.62)",
+              color: "color-mix(in srgb, var(--site-fg) 62%, transparent)",
               whiteSpace: "nowrap",
             }}
           >
@@ -149,13 +149,13 @@ export function WorkSection() {
                   style={{
                     position: "relative",
                     aspectRatio: "9/16",
-                    background: hasVideo ? "#111317" : "#F4F4F5",
+                    background: hasVideo ? "var(--site-fg)" : "var(--site-surface)",
                     borderRadius: "4px",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     overflow: "hidden",
-                    border: "1px solid #E6E7E9",
+                    border: "1px solid var(--site-border)",
                   }}
                 >
                   {hasVideo ? (
@@ -191,7 +191,7 @@ export function WorkSection() {
                         font: "600 9px/1.6 'Poppins',sans-serif",
                         letterSpacing: ".01em",
                         textTransform: "lowercase",
-                        color: "rgba(17,19,23,.62)",
+                        color: "color-mix(in srgb, var(--site-fg) 62%, transparent)",
                         textAlign: "center",
                       }}
                     >
@@ -211,10 +211,10 @@ export function WorkSection() {
                       font: "600 9px/1 'Poppins',sans-serif",
                       letterSpacing: ".04em",
                       textTransform: "uppercase",
-                      color: hasVideo ? "#FFFFFF" : "#111317",
+                      color: hasVideo ? "var(--site-bg)" : "var(--site-fg)",
                       background: hasVideo
                         ? "rgba(0,0,0,0.6)"
-                        : "rgba(255,255,255,0.8)",
+                        : "color-mix(in srgb, var(--site-bg) 80%, transparent)",
                       backdropFilter: "blur(4px)",
                       padding: "4px 8px",
                       borderRadius: "2px",
@@ -234,7 +234,7 @@ export function WorkSection() {
                       width: "36px",
                       height: "36px",
                       borderRadius: "99px",
-                      background: "#FFFFFF",
+                      background: "var(--site-bg)",
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
@@ -245,7 +245,7 @@ export function WorkSection() {
                       width="9"
                       height="11"
                       viewBox="0 0 10 12"
-                      fill="#111317"
+                      fill="var(--site-fg)"
                     >
                       <path d="M0 0l10 6-10 6z" />
                     </svg>
@@ -265,7 +265,7 @@ export function WorkSection() {
                         fontFamily: "'Bodoni Moda',serif",
                         fontSize: "20px",
                         lineHeight: 1.2,
-                        color: "#111317",
+                        color: "var(--site-fg)",
                       }}
                     >
                       {r.title}
@@ -273,7 +273,7 @@ export function WorkSection() {
                     <span
                       style={{
                         font: "400 12px/1.3 'Poppins',sans-serif",
-                        color: "rgba(17,19,23,.6)",
+                        color: "color-mix(in srgb, var(--site-fg) 60%, transparent)",
                       }}
                     >
                       {r.type}
@@ -284,7 +284,7 @@ export function WorkSection() {
                     style={{
                       fontFamily: "'Bodoni Moda',serif",
                       fontSize: "18px",
-                      color: "rgba(17,19,23,.5)",
+                      color: "color-mix(in srgb, var(--site-fg) 50%, transparent)",
                     }}
                   >
                     {r.n}
@@ -308,7 +308,7 @@ export function WorkSection() {
               position: "fixed",
               inset: 0,
               zIndex: 100,
-              background: "rgba(17, 19, 23, 0.88)",
+              background: "color-mix(in srgb, var(--site-fg) 88%, transparent)",
               backdropFilter: "blur(12px)",
               display: "flex",
               alignItems: "center",
@@ -352,7 +352,7 @@ export function WorkSection() {
                     flexDirection: "column",
                     alignItems: "center",
                     justifyContent: "center",
-                    color: "#FFFFFF",
+                    color: "var(--site-bg)",
                     gap: "12px",
                     padding: "24px",
                     textAlign: "center",
@@ -384,8 +384,8 @@ export function WorkSection() {
                   width: "36px",
                   height: "36px",
                   borderRadius: "99px",
-                  background: "rgba(255,255,255,0.2)",
-                  color: "#FFFFFF",
+                  background: "color-mix(in srgb, var(--site-bg) 20%, transparent)",
+                  color: "var(--site-bg)",
                   border: "none",
                   cursor: "pointer",
                   display: "flex",

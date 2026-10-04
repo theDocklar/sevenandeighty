@@ -24,7 +24,7 @@ export function KitSection() {
     <section
       id="kit"
       data-screen-label="06 Our kit"
-      style={{ borderBottom: "1px solid #E6E7E9" }}
+      style={{ borderBottom: "1px solid var(--site-border)" }}
     >
       <div
         style={{
@@ -44,7 +44,7 @@ export function KitSection() {
                 font: "500 13px/1 'Poppins',sans-serif",
                 letterSpacing: ".01em",
                 textTransform: "lowercase",
-                color: "rgba(17,19,23,.62)",
+                color: "color-mix(in srgb, var(--site-fg) 62%, transparent)",
               }}
             >
               04 — Our kit
@@ -74,7 +74,7 @@ export function KitSection() {
               letterSpacing: ".01em",
               textTransform: "lowercase",
               textAlign: "right",
-              color: "rgba(17,19,23,.62)",
+              color: "color-mix(in srgb, var(--site-fg) 62%, transparent)",
               whiteSpace: "nowrap",
             }}
           >
@@ -89,7 +89,7 @@ export function KitSection() {
         style={{
           display: "grid",
           gridTemplateColumns: "repeat(auto-fit,minmax(min(100%,200px),1fr))",
-          borderTop: "1px solid #E6E7E9",
+          borderTop: "1px solid var(--site-border)",
         }}
       >
         {KIT.map((k, i) => (
@@ -105,9 +105,9 @@ export function KitSection() {
                 flexDirection: "column",
                 justifyContent: "space-between",
                 gap: "24px",
-                borderRight: "1px solid #E6E7E9",
+                borderRight: "1px solid var(--site-border)",
                 cursor: "default",
-                background: "#FFFFFF",
+                background: "var(--site-bg)",
               }}
             >
               <div
@@ -117,7 +117,7 @@ export function KitSection() {
                   font: "500 12px/1 'Poppins',sans-serif",
                   letterSpacing: ".01em",
                   textTransform: "lowercase",
-                  color: "rgba(17,19,23,.7)",
+                  color: "color-mix(in srgb, var(--site-fg) 70%, transparent)",
                 }}
               >
                 <span>{k[0]}</span>
@@ -133,7 +133,7 @@ export function KitSection() {
                   justifyContent: "center",
                   font: "600 9px/1 'Poppins',sans-serif",
                   letterSpacing: ".05em",
-                  color: "rgba(17,19,23,.45)",
+                  color: "color-mix(in srgb, var(--site-fg) 45%, transparent)",
                 }}
               >
                 GEAR PHOTO
@@ -144,7 +144,7 @@ export function KitSection() {
                   fontWeight: 500,
                   fontSize: "26px",
                   lineHeight: 1.1,
-                  color: "#111317",
+                  color: "var(--site-fg)",
                 }}
               >
                 {k[1]}

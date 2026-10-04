@@ -1,10 +1,56 @@
 @import "tailwindcss";
 @import "./fonts.css";
 
-:root {
+:root,
+[data-active-theme="light"] {
   --background: #FFFFFF;
   --foreground: #111317;
   --border: #E6E7E9;
+
+  --site-bg: #FFFFFF;
+  --site-fg: #111317;
+  --site-muted: rgba(17, 19, 23, 0.62);
+  --site-border: #E6E7E9;
+  --site-accent: #0D3B3A;
+  --site-surface: #F4F4F5;
+
+  --st-bg: #FFFFFF;
+  --st-fg: #111317;
+  --st-muted: rgba(17, 19, 23, 0.62);
+  --st-border: #E6E7E9;
+  --st-accent: #0D3B3A;
+  --st-surface: #F4F4F5;
+}
+
+[data-active-theme="dark"] {
+  --background: #111317;
+  --foreground: #F4F4F5;
+  --border: rgba(255, 255, 255, 0.12);
+
+  --site-bg: #111317;
+  --site-fg: #F4F4F5;
+  --site-muted: rgba(244, 244, 245, 0.6);
+  --site-border: rgba(255, 255, 255, 0.12);
+  --site-accent: #4ADE80;
+  --site-surface: #1C1F25;
+
+  --st-bg: #111317;
+  --st-fg: #F4F4F5;
+  --st-muted: rgba(244, 244, 245, 0.6);
+  --st-border: rgba(255, 255, 255, 0.12);
+  --st-accent: #4ADE80;
+  --st-surface: #1C1F25;
+}
+
+html, body, [data-active-theme] {
+  transition: --site-bg 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+              --site-fg 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+              --site-muted 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+              --site-border 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+              --site-accent 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+              --site-surface 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+              color 0.75s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 html {
@@ -13,8 +59,8 @@ html {
 
 body {
   margin: 0;
-  background: #FFFFFF;
-  color: #111317;
+  background: var(--site-bg, #FFFFFF);
+  color: var(--site-fg, #111317);
   font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
@@ -272,3 +318,88 @@ button {
 ::-webkit-scrollbar-thumb:hover {
   background: #C4C6C9;
 }
+
+/* ------------------------------------------------------------------------ */
+/* Scroll Theme (/scroll-theme)                                             */
+/* Values are driven by Motion in ScrollTheme.tsx; @property gives typed    */
+/* fallbacks before hydration.                                              */
+/* ------------------------------------------------------------------------ */
+@property --site-bg { syntax: "<color>"; inherits: true; initial-value: #FFFFFF; }
+@property --site-fg { syntax: "<color>"; inherits: true; initial-value: #111317; }
+@property --site-muted { syntax: "<color>"; inherits: true; initial-value: rgba(17, 19, 23, 0.62); }
+@property --site-border { syntax: "<color>"; inherits: true; initial-value: #E6E7E9; }
+@property --site-accent { syntax: "<color>"; inherits: true; initial-value: #0D3B3A; }
+@property --site-surface { syntax: "<color>"; inherits: true; initial-value: #F4F4F5; }
+
+@property --st-bg { syntax: "<color>"; inherits: true; initial-value: #FFFFFF; }
+@property --st-fg { syntax: "<color>"; inherits: true; initial-value: #111317; }
+@property --st-muted { syntax: "<color>"; inherits: true; initial-value: rgba(17, 19, 23, 0.62); }
+@property --st-border { syntax: "<color>"; inherits: true; initial-value: #E6E7E9; }
+@property --st-accent { syntax: "<color>"; inherits: true; initial-value: #0D3B3A; }
+@property --st-surface { syntax: "<color>"; inherits: true; initial-value: #F4F4F5; }
+
+[data-active-theme] ::selection {
+  background: var(--site-fg);
+  color: var(--site-bg);
+}
+
+.header-logo,
+.footer-logo {
+  transition: filter 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-active-theme="dark"] .header-logo,
+[data-active-theme="dark"] .footer-logo {
+  filter: invert(1);
+}
+
+[data-active-theme="dark"] .marquee-logo {
+  filter: grayscale(1) invert(1) brightness(0.88);
+}
+
+.st-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 28px;
+  border-radius: 99px;
+  background: var(--st-fg);
+  color: var(--st-bg);
+  font: 600 12px/1 'Poppins', sans-serif;
+  letter-spacing: .01em;
+  text-transform: lowercase;
+  white-space: nowrap;
+  transition: opacity .25s ease;
+}
+.st-btn:hover { color: var(--st-bg); opacity: .88; }
+
+.st-btn-outline {
+  display: inline-flex;
+  align-items: center;
+  padding: 11px 20px;
+  border-radius: 99px;
+  border: 1px solid var(--st-fg);
+  color: var(--st-fg);
+  font: 500 13px/1 'Poppins', sans-serif;
+  text-transform: lowercase;
+  transition: background .3s cubic-bezier(0.16, 1, 0.3, 1), color .3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.st-btn-outline:hover { background: var(--st-fg); color: var(--st-bg); }
+
+.st-link {
+  font: 500 14px/1 'Poppins', sans-serif;
+  color: var(--st-fg);
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  text-decoration-color: var(--st-border);
+  transition: text-decoration-color .25s ease;
+}
+.st-link:hover { color: var(--st-fg); text-decoration-color: var(--st-fg); }
+
+.st-kit-card { transition: background .35s cubic-bezier(0.16, 1, 0.3, 1); }
+.st-kit-card:hover { background: var(--st-surface); }
+
+@media (max-width: 720px) {
+  .st-rail { display: none !important; }
+}
+

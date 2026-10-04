@@ -15,7 +15,7 @@ export function Footer() {
         flexDirection: "column",
         alignItems: "center",
         gap: "clamp(64px,8vw,112px)",
-        background: "#FFFFFF",
+        background: "var(--site-bg)",
       }}
     >
       {/* Horizontal Crosshair Line */}
@@ -30,7 +30,7 @@ export function Footer() {
           right: 0,
           top: "calc(clamp(80px,10vw,140px) + clamp(48px,6vw,90px))",
           height: "1px",
-          background: "#E6E7E9",
+          background: "var(--site-border)",
           transformOrigin: "center",
         }}
       />
@@ -47,7 +47,7 @@ export function Footer() {
           bottom: 0,
           left: "50%",
           width: "1px",
-          background: "#E6E7E9",
+          background: "var(--site-border)",
           transformOrigin: "top",
         }}
       />
@@ -59,7 +59,7 @@ export function Footer() {
           transition={{ type: "spring", stiffness: 300, damping: 20 }}
           style={{
             position: "relative",
-            background: "#FFFFFF",
+            background: "var(--site-bg)",
             padding: "24px clamp(20px,3vw,40px)",
             borderRadius: "4px",
           }}
@@ -87,13 +87,13 @@ export function Footer() {
             justifyContent: "space-between",
             alignItems: "center",
             gap: "16px 24px",
-            background: "#FFFFFF",
+            background: "var(--site-bg)",
             paddingTop: "24px",
-            borderTop: "1px solid #E6E7E9",
+            borderTop: "1px solid var(--site-border)",
             font: "600 10px/1.6 'Poppins',sans-serif",
             letterSpacing: ".01em",
             textTransform: "lowercase",
-            color: "rgba(17,19,23,.62)",
+            color: "color-mix(in srgb, var(--site-fg) 62%, transparent)",
           }}
         >
           <span style={{ whiteSpace: "nowrap" }}>
@@ -109,10 +109,10 @@ export function Footer() {
                 transition: "color .2s",
               }}
               onMouseEnter={(e) =>
-                (e.currentTarget.style.color = "#111317")
+                (e.currentTarget.style.color = "var(--site-fg)")
               }
               onMouseLeave={(e) =>
-                (e.currentTarget.style.color = "rgba(17,19,23,.62)")
+                (e.currentTarget.style.color = "color-mix(in srgb, var(--site-fg) 62%, transparent)")
               }
             >
               behind the scenes
@@ -125,10 +125,10 @@ export function Footer() {
                 transition: "color .2s",
               }}
               onMouseEnter={(e) =>
-                (e.currentTarget.style.color = "#111317")
+                (e.currentTarget.style.color = "var(--site-fg)")
               }
               onMouseLeave={(e) =>
-                (e.currentTarget.style.color = "rgba(17,19,23,.62)")
+                (e.currentTarget.style.color = "color-mix(in srgb, var(--site-fg) 62%, transparent)")
               }
             >
               inquire
@@ -143,10 +143,10 @@ export function Footer() {
                 transition: "color .2s",
               }}
               onMouseEnter={(e) =>
-                (e.currentTarget.style.color = "#111317")
+                (e.currentTarget.style.color = "var(--site-fg)")
               }
               onMouseLeave={(e) =>
-                (e.currentTarget.style.color = "rgba(17,19,23,.62)")
+                (e.currentTarget.style.color = "color-mix(in srgb, var(--site-fg) 62%, transparent)")
               }
             >
               @7n80e
@@ -170,24 +170,24 @@ export function Footer() {
                 display: "inline-flex",
                 alignItems: "center",
                 gap: "7px",
-                color: "rgba(17,19,23,.75)",
+                color: "color-mix(in srgb, var(--site-fg) 75%, transparent)",
                 textDecoration: "none",
                 font: "500 10px/1 'Poppins',sans-serif",
                 letterSpacing: ".02em",
                 textTransform: "lowercase",
                 transition: "color .2s",
-                background: "rgba(17,19,23,.03)",
+                background: "color-mix(in srgb, var(--site-fg) 3%, transparent)",
                 padding: "6px 12px",
                 borderRadius: "99px",
-                border: "1px solid rgba(17,19,23,.08)",
+                border: "1px solid color-mix(in srgb, var(--site-fg) 8%, transparent)",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.color = "#111317";
-                e.currentTarget.style.borderColor = "#111317";
+                e.currentTarget.style.color = "var(--site-fg)";
+                e.currentTarget.style.borderColor = "var(--site-fg)";
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.color = "rgba(17,19,23,.75)";
-                e.currentTarget.style.borderColor = "rgba(17,19,23,.08)";
+                e.currentTarget.style.color = "color-mix(in srgb, var(--site-fg) 75%, transparent)";
+                e.currentTarget.style.borderColor = "color-mix(in srgb, var(--site-fg) 8%, transparent)";
               }}
             >
               <span>dev by</span>

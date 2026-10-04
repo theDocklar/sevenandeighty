@@ -201,7 +201,7 @@ export function HeroSection() {
       style={{
         position: "relative",
         padding: "clamp(56px,8vw,120px) clamp(16px,4vw,56px) clamp(56px,7vw,104px)",
-        borderBottom: "1px solid #E6E7E9",
+        borderBottom: "1px solid var(--site-border)",
         overflow: "hidden",
       }}
     >
@@ -217,7 +217,7 @@ export function HeroSection() {
             right: 0,
             top: "62%",
             height: 1,
-            background: "#E6E7E9",
+            background: "var(--site-border)",
             transformOrigin: "0% 50%",
           }}
         />
@@ -231,7 +231,7 @@ export function HeroSection() {
             bottom: 0,
             left: "64%",
             width: 1,
-            background: "#E6E7E9",
+            background: "var(--site-border)",
             transformOrigin: "50% 0%",
           }}
         />
@@ -246,7 +246,7 @@ export function HeroSection() {
             font: "600 10px/1.6 'Poppins',sans-serif",
             letterSpacing: ".01em",
             textTransform: "lowercase",
-            color: "rgba(17,19,23,.62)",
+            color: "color-mix(in srgb, var(--site-fg) 62%, transparent)",
             whiteSpace: "nowrap",
           }}
         >
@@ -282,7 +282,7 @@ export function HeroSection() {
                 font: "500 13px/1 'Poppins',sans-serif",
                 letterSpacing: ".01em",
                 textTransform: "lowercase",
-                color: "rgba(17,19,23,.62)",
+                color: "color-mix(in srgb, var(--site-fg) 62%, transparent)",
               }}
             >
               Social media &amp; video agency · Sri Lanka
@@ -338,8 +338,8 @@ export function HeroSection() {
                     display: "flex",
                     alignItems: "center",
                     gap: "14px",
-                    background: "#111317",
-                    color: "#FFFFFF",
+                    background: "var(--site-fg)",
+                    color: "var(--site-bg)",
                     borderRadius: "99px",
                     padding: "18px 28px",
                     font: "600 12px/1 'Poppins',sans-serif",

@@ -30,7 +30,7 @@ export function ServicesSection() {
       style={{
         display: "flex",
         flexWrap: "wrap",
-        borderBottom: "1px solid #E6E7E9",
+        borderBottom: "1px solid var(--site-border)",
       }}
     >
       <div
@@ -41,7 +41,7 @@ export function ServicesSection() {
           flexDirection: "column",
           justifyContent: "space-between",
           gap: "40px",
-          borderRight: "1px solid #E6E7E9",
+          borderRight: "1px solid var(--site-border)",
         }}
       >
         <div style={{ display: "flex", flexDirection: "column", gap: "22px" }}>
@@ -51,7 +51,7 @@ export function ServicesSection() {
                 font: "500 13px/1 'Poppins',sans-serif",
                 letterSpacing: ".01em",
                 textTransform: "lowercase",
-                color: "rgba(17,19,23,.62)",
+                color: "color-mix(in srgb, var(--site-fg) 62%, transparent)",
               }}
             >
               02 — What we do
@@ -95,7 +95,7 @@ export function ServicesSection() {
                   font: "600 10px/1.6 'Poppins',sans-serif",
                   letterSpacing: ".01em",
                   textTransform: "lowercase",
-                  color: "rgba(17,19,23,.62)",
+                  color: "color-mix(in srgb, var(--site-fg) 62%, transparent)",
                 }}
               >
                 {pad(activeSvc + 1)}° OF 08
@@ -104,7 +104,7 @@ export function ServicesSection() {
                 style={{
                   font: "400 18px/1.5 'Poppins',sans-serif",
                   textWrap: "pretty",
-                  color: "#111317",
+                  color: "var(--site-fg)",
                 }}
               >
                 {SVC[activeSvc][1]}
@@ -126,10 +126,10 @@ export function ServicesSection() {
                     gap: "8px",
                     padding: "8px 16px",
                     borderRadius: "99px",
-                    background: "rgba(17,19,23,.04)",
-                    border: "1px solid rgba(17,19,23,.12)",
+                    background: "color-mix(in srgb, var(--site-fg) 4%, transparent)",
+                    border: "1px solid color-mix(in srgb, var(--site-fg) 12%, transparent)",
                     textDecoration: "none",
-                    color: "#111317",
+                    color: "var(--site-fg)",
                     font: "500 11px/1 'Poppins',sans-serif",
                     letterSpacing: ".01em",
                     textTransform: "lowercase",
@@ -137,14 +137,14 @@ export function ServicesSection() {
                     transition: "all .2s ease",
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.background = "#111317";
-                    e.currentTarget.style.color = "#FFFFFF";
-                    e.currentTarget.style.borderColor = "#111317";
+                    e.currentTarget.style.background = "var(--site-fg)";
+                    e.currentTarget.style.color = "var(--site-bg)";
+                    e.currentTarget.style.borderColor = "var(--site-fg)";
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.background = "rgba(17,19,23,.04)";
-                    e.currentTarget.style.color = "#111317";
-                    e.currentTarget.style.borderColor = "rgba(17,19,23,.12)";
+                    e.currentTarget.style.background = "color-mix(in srgb, var(--site-fg) 4%, transparent)";
+                    e.currentTarget.style.color = "var(--site-fg)";
+                    e.currentTarget.style.borderColor = "color-mix(in srgb, var(--site-fg) 12%, transparent)";
                   }}
                 >
                   <span style={{ opacity: 0.75 }}>Engineered in partnership with</span>
@@ -197,7 +197,7 @@ export function ServicesSection() {
                 alignItems: "baseline",
                 gap: "22px",
                 padding: "20px clamp(16px,3vw,48px)",
-                borderBottom: "1px solid #E6E7E9",
+                borderBottom: "1px solid var(--site-border)",
                 opacity: isActive ? 1 : 0.42,
                 transition: "opacity .3s cubic-bezier(0.16, 1, 0.3, 1), transform .3s cubic-bezier(0.16, 1, 0.3, 1)",
                 transform: isActive ? "translateX(4px)" : "translateX(0)",
@@ -239,10 +239,10 @@ export function ServicesSection() {
                       font: "500 10px/1 'Poppins',sans-serif",
                       fontStyle: "normal",
                       letterSpacing: ".02em",
-                      background: "rgba(17,19,23,.05)",
+                      background: "color-mix(in srgb, var(--site-fg) 5%, transparent)",
                       padding: "3px 9px",
                       borderRadius: "99px",
-                      color: "rgba(17,19,23,.75)",
+                      color: "color-mix(in srgb, var(--site-fg) 75%, transparent)",
                     }}
                   >
                     <img

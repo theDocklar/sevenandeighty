@@ -16,7 +16,7 @@ export function ContactSection() {
       style={{
         display: "flex",
         flexWrap: "wrap",
-        borderBottom: "1px solid #E6E7E9",
+        borderBottom: "1px solid var(--site-border)",
       }}
     >
       <div
@@ -26,7 +26,7 @@ export function ContactSection() {
           display: "flex",
           flexDirection: "column",
           gap: "28px",
-          borderRight: "1px solid #E6E7E9",
+          borderRight: "1px solid var(--site-border)",
         }}
       >
         <Reveal delay={0}>
@@ -35,7 +35,7 @@ export function ContactSection() {
               font: "500 13px/1 'Poppins',sans-serif",
               letterSpacing: ".01em",
               textTransform: "lowercase",
-              color: "rgba(17,19,23,.62)",
+              color: "color-mix(in srgb, var(--site-fg) 62%, transparent)",
             }}
           >
             05 — Contact
@@ -57,7 +57,7 @@ export function ContactSection() {
             style={{
               margin: 0,
               font: "400 clamp(17px,1.4vw,20px)/1.5 'Poppins',sans-serif",
-              color: "#111317",
+              color: "var(--site-fg)",
             }}
           >
             Tell us what you&apos;re selling.
@@ -78,8 +78,8 @@ export function ContactSection() {
                 display: "inline-flex",
                 alignItems: "center",
                 gap: "14px",
-                background: "#111317",
-                color: "#FFFFFF",
+                background: "var(--site-fg)",
+                color: "var(--site-bg)",
                 borderRadius: "99px",
                 padding: "18px 28px",
                 font: "600 12px/1 'Poppins',sans-serif",
@@ -126,10 +126,10 @@ export function ContactSection() {
               justifyContent: "space-between",
               gap: "28px",
               padding: "32px clamp(16px,3vw,48px)",
-              borderBottom: "1px solid #E6E7E9",
+              borderBottom: "1px solid var(--site-border)",
               textDecoration: "none",
               color: "inherit",
-              background: "#FFFFFF",
+              background: "var(--site-bg)",
             }}
           >
             <span
@@ -137,7 +137,7 @@ export function ContactSection() {
                 font: "500 12px/1 'Poppins',sans-serif",
                 letterSpacing: ".01em",
                 textTransform: "lowercase",
-                color: "rgba(17,19,23,.62)",
+                color: "color-mix(in srgb, var(--site-fg) 62%, transparent)",
               }}
             >
               WhatsApp · Lashitha
@@ -148,7 +148,7 @@ export function ContactSection() {
                 fontWeight: 500,
                 fontSize: "clamp(28px,3vw,42px)",
                 lineHeight: 1,
-                color: "#111317",
+                color: "var(--site-fg)",
               }}
             >
               +94 77 514 6688
@@ -169,10 +169,10 @@ export function ContactSection() {
               justifyContent: "space-between",
               gap: "28px",
               padding: "32px clamp(16px,3vw,48px)",
-              borderBottom: "1px solid #E6E7E9",
+              borderBottom: "1px solid var(--site-border)",
               textDecoration: "none",
               color: "inherit",
-              background: "#FFFFFF",
+              background: "var(--site-bg)",
             }}
           >
             <span
@@ -180,7 +180,7 @@ export function ContactSection() {
                 font: "500 12px/1 'Poppins',sans-serif",
                 letterSpacing: ".01em",
                 textTransform: "lowercase",
-                color: "rgba(17,19,23,.62)",
+                color: "color-mix(in srgb, var(--site-fg) 62%, transparent)",
               }}
             >
               Phone · Sandanu
@@ -191,7 +191,7 @@ export function ContactSection() {
                 fontWeight: 500,
                 fontSize: "clamp(28px,3vw,42px)",
                 lineHeight: 1,
-                color: "#111317",
+                color: "var(--site-fg)",
               }}
             >
               +94 76 690 1333
@@ -210,7 +210,7 @@ export function ContactSection() {
               font: "600 10px/1.6 'Poppins',sans-serif",
               letterSpacing: ".01em",
               textTransform: "lowercase",
-              color: "rgba(17,19,23,.62)",
+              color: "color-mix(in srgb, var(--site-fg) 62%, transparent)",
             }}
           >
             <span style={{ whiteSpace: "nowrap" }}>

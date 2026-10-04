@@ -4,12 +4,14 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
+  AnimatePresence,
   motion,
   useMotionValueEvent,
   useScroll,
   useSpring,
 } from "motion/react";
 import { EASE_OUT_EXPO } from "@/components/motion/primitives";
+import { useScrollTheme } from "@/components/theme/ScrollTheme";
 
 const NAV_ITEMS = [
   { label: "work", href: "/#work", sectionId: "work" },
@@ -22,6 +24,7 @@ const NAV_ITEMS = [
 
 export function Header() {
   const pathname = usePathname();
+  const { theme, toggleTheme } = useScrollTheme();
   const [hidden, setHidden] = useState(false);
   const [activeSection, setActiveSection] = useState("");
   const { scrollY, scrollYProgress } = useScroll();
@@ -76,10 +79,10 @@ export function Header() {
         position: "sticky",
         top: 0,
         zIndex: 50,
-        background: "rgba(255,255,255,.94)",
+        background: "color-mix(in srgb, var(--site-bg) 94%, transparent)",
         backdropFilter: "blur(8px)",
         WebkitBackdropFilter: "blur(8px)",
-        borderBottom: "1px solid #E6E7E9",
+        borderBottom: "1px solid var(--site-border)",
       }}
     >
       <div
@@ -145,7 +148,7 @@ export function Header() {
                       right: 0,
                       bottom: 20,
                       height: 1,
-                      background: "#111317",
+                      background: "var(--site-fg)",
                     }}
                   />
                 )}
@@ -155,6 +158,52 @@ export function Header() {
         </nav>
 
         <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+          <button
+            type="button"
+            onClick={toggleTheme}
+            title={`Current theme: ${theme}. Click to toggle.`}
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 8,
+              padding: "9px 15px",
+              borderRadius: 99,
+              border: "1px solid var(--site-border)",
+              background: "color-mix(in srgb, var(--site-fg) 4%, transparent)",
+              color: "var(--site-fg)",
+              font: "500 12px/1 'Poppins',sans-serif",
+              letterSpacing: ".01em",
+              textTransform: "lowercase",
+              cursor: "pointer",
+              transition: "border-color 0.3s ease, background-color 0.3s ease",
+            }}
+          >
+            <span
+              data-pulse="1"
+              style={{
+                width: 6,
+                height: 6,
+                borderRadius: 99,
+                background: theme === "dark" ? "#4ADE80" : "var(--site-accent)",
+                transition: "background-color 0.3s ease",
+              }}
+            />
+            <span style={{ position: "relative", display: "inline-block", width: 34, height: 12, overflow: "hidden" }}>
+              <AnimatePresence initial={false} mode="popLayout">
+                <motion.span
+                  key={theme}
+                  initial={{ y: "100%", opacity: 0 }}
+                  animate={{ y: "0%", opacity: 1 }}
+                  exit={{ y: "-100%", opacity: 0 }}
+                  transition={{ duration: 0.4, ease: EASE_OUT_EXPO }}
+                  style={{ position: "absolute", inset: 0 }}
+                >
+                  {theme}
+                </motion.span>
+              </AnimatePresence>
+            </span>
+          </button>
+
           <Link
             href="/inquire"
             className="btn-whatsapp-header"
@@ -163,9 +212,9 @@ export function Header() {
               display: "flex",
               alignItems: "center",
               gap: "10px",
-              border: "1px solid #111317",
-              background: pathname === "/inquire" ? "#111317" : "transparent",
-              color: pathname === "/inquire" ? "#FFFFFF" : "#111317",
+              border: "1px solid var(--site-fg)",
+              background: pathname === "/inquire" ? "var(--site-fg)" : "transparent",
+              color: pathname === "/inquire" ? "var(--site-bg)" : "var(--site-fg)",
               borderRadius: "99px",
               padding: "12px 22px",
               font: "500 13px/1 'Poppins',sans-serif",
@@ -182,7 +231,7 @@ export function Header() {
                 width: 6,
                 height: 6,
                 borderRadius: 99,
-                background: pathname === "/inquire" ? "#FFFFFF" : "#0D3B3A",
+                background: pathname === "/inquire" ? "var(--site-bg)" : "var(--site-accent)",
               }}
             />
             Inquire
@@ -201,7 +250,7 @@ export function Header() {
           right: 0,
           bottom: -1,
           height: 1,
-          background: "#111317",
+          background: "var(--site-fg)",
         }}
       />
     </motion.header>

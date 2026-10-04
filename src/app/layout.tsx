@@ -120,7 +120,14 @@ export default function RootLayout({
       <head>
         <JsonLd />
       </head>
-      <body className="min-h-screen bg-white text-ink antialiased">
+      <body
+        className="min-h-screen antialiased"
+        style={{
+          background: "var(--site-bg, #FFFFFF)",
+          color: "var(--site-fg, #111317)",
+          transition: "background-color 0.4s ease, color 0.4s ease",
+        }}
+      >
         {children}
       </body>
     </html>
